@@ -1,0 +1,255 @@
+/* Variáveis de Cores */
+:root {
+    --bg-color: #241A30; /* Fundo */
+    --roxo: #51307A;     /* Roxo */
+    --creme: #EFE6D2;    /* Creme */
+    --vinho: #6B1F2A;    /* Vinho */
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--creme);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+}
+
+/* --- HEADER --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: var(--bg-color);
+    border-bottom: 5px solid var(--roxo);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 2rem;
+    color: var(--creme);
+    letter-spacing: -1px;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--creme);
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.nav-menu a:hover {
+    background-color: var(--vinho);
+    border: 2px solid var(--creme);
+    transform: rotate(-3deg);
+    display: inline-block;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    padding: 100px 20px 150px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chamada {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: var(--vinho);
+    color: var(--creme);
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    transform: rotate(2deg);
+    border: 3px solid var(--roxo);
+}
+
+.hero h1 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: var(--roxo);
+    -webkit-text-stroke: 2px var(--creme);
+    line-height: 1;
+    margin-bottom: 40px;
+    transform: rotate(-2deg);
+    letter-spacing: -3px;
+}
+
+.info-festival {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.box-info {
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: 4px solid var(--creme);
+    text-transform: uppercase;
+}
+
+.data {
+    background-color: var(--roxo);
+    transform: rotate(-3deg);
+}
+
+.local {
+    background-color: var(--bg-color);
+    transform: rotate(3deg);
+}
+
+.btn-comprar {
+    display: inline-block;
+    background-color: var(--creme);
+    color: var(--bg-color);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    text-decoration: none;
+    padding: 20px 50px;
+    border: 5px solid var(--vinho);
+    box-shadow: 10px 10px 0 var(--roxo);
+    transition: all 0.1s ease;
+}
+
+.btn-comprar:hover {
+    transform: translate(5px, 5px);
+    box-shadow: 5px 5px 0 var(--roxo);
+}
+
+/* --- LINE-UP SECTION --- */
+.lineup {
+    background-color: var(--roxo);
+    padding: 100px 20px;
+    border-top: 8px solid var(--creme);
+    border-bottom: 8px solid var(--creme);
+}
+
+.lineup h2 {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 80px;
+    color: var(--creme);
+    text-shadow: 5px 5px 0 var(--vinho);
+}
+
+.grid-atracoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.card-atracao {
+    background-color: var(--bg-color);
+    border: 5px solid var(--creme);
+    padding: 60px 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 12px 12px 0 var(--vinho);
+    transition: transform 0.2s;
+}
+
+.card-atracao:hover {
+    transform: scale(1.05);
+}
+
+.card-atracao h3 {
+    font-size: 2.5rem;
+    color: var(--creme);
+}
+
+.atracao-1 {
+    transform: rotate(-4deg);
+}
+
+.atracao-2 {
+    background-color: var(--vinho);
+    box-shadow: 12px 12px 0 var(--bg-color);
+    transform: rotate(3deg);
+}
+
+.atracao-3 {
+    transform: rotate(-2deg);
+}
+
+/* --- FOOTER --- */
+.footer {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: var(--bg-color);
+}
+
+.footer-logo {
+    font-size: 2.5rem;
+    color: var(--roxo);
+    margin-bottom: 10px;
+}
+
+.footer-texto {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    color: var(--creme);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--vinho);
+}
+
+.direitos {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .lineup h2 {
+        font-size: 2.5rem;
+    }
+}
