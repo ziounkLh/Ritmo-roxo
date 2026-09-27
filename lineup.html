@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line-up — Ritmo Roxo 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'violet-dark': '#241A30',
+                        'purple-accent': '#51307A',
+                        'cream': '#EFE6D2',
+                        'cream-muted': 'rgba(239, 230, 210, 0.7)',
+                        'cream-subtle': 'rgba(239, 230, 210, 0.15)',
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-violet-dark text-cream min-h-screen flex flex-col">
+
+    <header class="w-full border-b border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent">Ritmo Roxo</a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Início</a>
+                <a href="lineup.html" class="text-cream border-b-2 border-cream pb-1 font-semibold">Line-up</a>
+                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Ingressos</a>
+                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Informações</a>
+                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Dúvidas e contato</a>
+            </nav>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b border-cream-subtle px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-lg text-cream-muted py-1 font-display">Início</a>
+            <a href="lineup.html" class="block text-lg text-cream py-1 font-display">Line-up</a>
+            <a href="ingressos.html" class="block text-lg text-cream-muted py-1 font-display">Ingressos</a>
+            <a href="informacoes.html" class="block text-lg text-cream-muted py-1 font-display">Informações</a>
+            <a href="faq.html" class="block text-lg text-cream-muted py-1 font-display">Dúvidas e contato</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+            <div class="border-b border-cream-subtle pb-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <span class="text-xs text-purple-300 font-mono uppercase tracking-widest">Programação Completa</span>
+                    <h1 class="font-display font-light text-4xl sm:text-6xl text-cream mt-2">Line-up 2026</h1>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterLineup('all')" id="filter-all" class="filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream bg-cream text-violet-dark">Todos</button>
+                    <button onclick="filterLineup('dia17')" id="filter-dia17" class="filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream">17 Out</button>
+                    <button onclick="filterLineup('dia18')" id="filter-dia18" class="filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream">18 Out</button>
+                    <button onclick="filterLineup('dia19')" id="filter-dia19" class="filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream">19 Out</button>
+                </div>
+            </div>
+
+            <div class="space-y-16">
+                <!-- DIA 17 -->
+                <div id="group-dia17" class="lineup-group space-y-8">
+                    <div class="flex items-center space-x-4">
+                        <h2 class="font-display text-2xl text-cream">Sexta-feira, 17 de Outubro</h2>
+                        <div class="flex-grow h-px bg-cream-subtle"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-black/30 border border-purple-accent/40 p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">23:00 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Billie Eilish</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Pioneira do pop alternativo obscuro, apresentando repertório exclusivo de seus maiores sucessos.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">21:00 — Palco Violeta</span>
+                            <h3 class="font-display text-2xl text-cream">Dominic Fike</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Fusão vibrante de alt-pop, indie rock e hip-hop experimental em um show eletrizante.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">19:30 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Clairo</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Melodias intimistas e Bedroom Pop sofisticado revestido em arranjos analógicos envolventes.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">18:00 — Palco Violeta</span>
+                            <h3 class="font-display text-2xl text-cream">Ana Carolina</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Voz marcante da MPB e do pop rock, entregando vocais graves potentes e grandes sucessos da música brasileira.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">16:45 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Liniker</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">A voz aveludada e potente do soul-pop brasileiro inaugurando a vibração do festival.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIA 18 -->
+                <div id="group-dia18" class="lineup-group space-y-8">
+                    <div class="flex items-center space-x-4">
+                        <h2 class="font-display text-2xl text-cream">Sábado, 18 de Outubro</h2>
+                        <div class="flex-grow h-px bg-cream-subtle"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-black/30 border border-purple-accent/40 p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">21:15 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Melanie Martinez</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Espetáculo teatral imersivo repleto de cenografia fantástica e figurinos de altíssimo conceito.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-purple-accent/40 p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">23:30 — Palco Roxo</span>
+                            <h3 class="font-display text-2xl text-cream">Lana Del Rey</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Estética cinematográfica noir, pop melancólico e uma atmosfera hipnotizante na apresentação noturna.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">19:30 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Phoebe Bridgers</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Indie e pop melancólico com composições poéticas afiadas e arranjos orquestrais solenes.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">18:00 — Palco Violeta</span>
+                            <h3 class="font-display text-2xl text-cream">Marina Sena</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Pop tropical, batidas contemporâneas e magnetismo de palco incomparável no cenário atual.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">16:30 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Aurora Aksnes</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Pop etéreo, vocais cristalinos e uma presença mística contagiante nos palcos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIA 19 -->
+                <div id="group-dia19" class="lineup-group space-y-8">
+                    <div class="flex items-center space-x-4">
+                        <h2 class="font-display text-2xl text-cream">Domingo, 19 de Outubro</h2>
+                        <div class="flex-grow h-px bg-cream-subtle"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-black/30 border border-purple-accent/40 p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">22:30 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Rita Lee</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">A eterna rainha do rock brasileiro em um show inesquecível no grande encerramento do festival.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">20:30 — Palco Violeta</span>
+                            <h3 class="font-display text-2xl text-cream">Sabrina Carpenter</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Hits pop contagiantes, carisma radiante e uma performance vibrante repleta de atitude.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">19:00 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Mitski</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Expressividade teatral e lírica visceral em arranjos indie-pop intensos e cativantes.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">17:45 — Palco Violeta</span>
+                            <h3 class="font-display text-2xl text-cream">Girl in Red</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Guitarras enérgicas e hinos do pop alternativo jovem celebrados com vibração total.</p>
+                        </div>
+
+                        <div class="bg-black/30 border border-cream-subtle p-6 space-y-3 hover:border-cream">
+                            <span class="text-xs text-purple-300 font-mono">16:30 — Palco Principal</span>
+                            <h3 class="font-display text-2xl text-cream">Marina and the Diamonds</h3>
+                            <p class="text-xs text-cream-muted font-light leading-relaxed">Pop teatral, letras afiadas e hinos alternativos cheios de estilo e personalidade.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-cream-subtle bg-violet-dark py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-cream-muted">
+            <div><span class="font-display italic text-lg text-cream">Ritmo Roxo</span> — Festival de Pop Alternativo 2026</div>
+            <p class="text-xs">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function filterLineup(day) {
+            const group17 = document.getElementById('group-dia17');
+            const group18 = document.getElementById('group-dia18');
+            const group19 = document.getElementById('group-dia19');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.className = 'filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream';
+            });
+
+            document.getElementById('filter-' + day).className = 'filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream bg-cream text-violet-dark';
+
+            if (day === 'all') {
+                group17.classList.remove('hidden');
+                group18.classList.remove('hidden');
+                group19.classList.remove('hidden');
+            } else if (day === 'dia17') {
+                group17.classList.remove('hidden');
+                group18.classList.add('hidden');
+                group19.classList.add('hidden');
+            } else if (day === 'dia18') {
+                group17.classList.add('hidden');
+                group18.classList.remove('hidden');
+                group19.classList.add('hidden');
+            } else if (day === 'dia19') {
+                group17.classList.add('hidden');
+                group18.classList.add('hidden');
+                group19.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

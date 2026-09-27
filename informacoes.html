@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações — Ritmo Roxo 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'violet-dark': '#241A30',
+                        'purple-accent': '#51307A',
+                        'cream': '#EFE6D2',
+                        'cream-muted': 'rgba(239, 230, 210, 0.7)',
+                        'cream-subtle': 'rgba(239, 230, 210, 0.15)',
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-violet-dark text-cream min-h-screen flex flex-col">
+
+    <header class="w-full border-b border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent">Ritmo Roxo</a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Início</a>
+                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Line-up</a>
+                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Ingressos</a>
+                <a href="informacoes.html" class="text-cream border-b-2 border-cream pb-1 font-semibold">Informações</a>
+                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Dúvidas e contato</a>
+            </nav>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b border-cream-subtle px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-lg text-cream-muted py-1 font-display">Início</a>
+            <a href="lineup.html" class="block text-lg text-cream-muted py-1 font-display">Line-up</a>
+            <a href="ingressos.html" class="block text-lg text-cream-muted py-1 font-display">Ingressos</a>
+            <a href="informacoes.html" class="block text-lg text-cream py-1 font-display">Informações</a>
+            <a href="faq.html" class="block text-lg text-cream-muted py-1 font-display">Dúvidas e contato</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 space-y-12">
+            <div class="border-b border-cream-subtle pb-8">
+                <span class="text-xs text-purple-300 font-mono uppercase tracking-widest">Guia Prático</span>
+                <h1 class="font-display font-light text-4xl sm:text-6xl text-cream mt-2">Informações do Evento</h1>
+            </div>
+
+            <!-- Bloco principal: Local e Como Chegar com Texto e Mapa lado a lado -->
+            <div class="bg-black/30 border border-cream-subtle p-8 lg:p-10 space-y-6">
+                <h2 class="font-display text-2xl lg:text-3xl text-cream">Local e Como Chegar</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Texto descritivo na esquerda -->
+                    <div class="space-y-4">
+                        <p class="text-base text-cream-muted leading-relaxed">
+                            <strong class="text-cream text-lg">Espaço Unimed</strong><br>
+                            Rua Tagipuru, 795 — Barra Funda, São Paulo/SP.
+                        </p>
+                        <p class="text-sm text-cream-muted leading-relaxed">
+                            A apenas 500 metros da Estação de Metrô e Trem <strong class="text-cream">Palmeiras-Barra Funda (Linha 3-Vermelha)</strong>.
+                        </p>
+                        <p class="text-sm text-cream-muted leading-relaxed">
+                            Recomendamos priorizar o transporte público ou serviços de aplicativo para maior comodidade durante o festival.
+                        </p>
+                    </div>
+
+                    <!-- Mapa na direita -->
+                    <div class="w-full h-64 lg:h-72 overflow-hidden rounded border border-cream-subtle/50 shadow-lg">
+                        <iframe 
+                            title="Mapa de localização do Espaço Unimed"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.822818556396!2d-46.6698687!3d-23.5298642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce580f8e998e3b%3A0x6b245a4ba4353d7e!2sEspa%C3%A7o%20Unimed!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outras Informações (Horários, Permissões, Acessibilidade) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Horários -->
+                <div class="bg-black/30 border border-cream-subtle p-8 space-y-4">
+                    <h2 class="font-display text-xl text-cream">Horários dos 3 Dias</h2>
+                    <ul class="text-sm text-cream-muted space-y-2">
+                        <li>• <strong class="text-cream">Sexta (17/10):</strong> Abertura 16:00 | Shows até 01:00</li>
+                        <li>• <strong class="text-cream">Sábado (18/10):</strong> Abertura 16:00 | Shows até 01:00</li>
+                        <li>• <strong class="text-cream">Domingo (19/10):</strong> Abertura 15:30 | Shows até 00:00</li>
+                    </ul>
+                </div>
+
+                <!-- O que levar / Proibido -->
+                <div class="bg-black/30 border border-cream-subtle p-8 space-y-4">
+                    <h2 class="font-display text-xl text-cream">O que levar e Permissões</h2>
+                    <div class="text-sm text-cream-muted space-y-2">
+                        <p><strong class="text-cream">Permitido:</strong> Documento com foto, garrafa de água plástica transparente sem tampa, capa de chuva e mochila pequena.</p>
+                        <p><strong class="text-cream">Proibido:</strong> Objetos cortantes, garrafas de vidro, bastão de selfie e câmeras profissionais.</p>
+                    </div>
+                </div>
+
+                <!-- Acessibilidade e Estrutura -->
+                <div class="bg-black/30 border border-cream-subtle p-8 space-y-4">
+                    <h2 class="font-display text-xl text-cream">Acessibilidade e Apoio</h2>
+                    <p class="text-sm text-cream-muted leading-relaxed">
+                        Acessibilidade total para PCDs, rampas, banheiros adaptados, área reservada próxima aos palcos e brigada médica de plantão.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-cream-subtle bg-violet-dark py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-cream-muted">
+            <div><span class="font-display italic text-lg text-cream">Ritmo Roxo</span> — Festival de Pop Alternativo 2026</div>
+            <p class="text-xs">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

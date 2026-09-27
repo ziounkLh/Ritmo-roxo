@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingressos — Ritmo Roxo 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'violet-dark': '#241A30',
+                        'purple-accent': '#51307A',
+                        'cream': '#EFE6D2',
+                        'cream-muted': 'rgba(239, 230, 210, 0.7)',
+                        'cream-subtle': 'rgba(239, 230, 210, 0.15)',
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-violet-dark text-cream min-h-screen flex flex-col">
+
+    <header class="w-full border-b border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent">Ritmo Roxo</a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Início</a>
+                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Line-up</a>
+                <a href="ingressos.html" class="text-cream border-b-2 border-cream pb-1 font-semibold">Ingressos</a>
+                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Informações</a>
+                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Dúvidas e contato</a>
+            </nav>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b border-cream-subtle px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-lg text-cream-muted py-1 font-display">Início</a>
+            <a href="lineup.html" class="block text-lg text-cream-muted py-1 font-display">Line-up</a>
+            <a href="ingressos.html" class="block text-lg text-cream py-1 font-display">Ingressos</a>
+            <a href="informacoes.html" class="block text-lg text-cream-muted py-1 font-display">Informações</a>
+            <a href="faq.html" class="block text-lg text-cream-muted py-1 font-display">Dúvidas e contato</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+            <div class="border-b border-cream-subtle pb-8 mb-12">
+                <span class="text-xs text-purple-300 font-mono uppercase tracking-widest">Bilheteria Oficial</span>
+                <h1 class="font-display font-light text-4xl sm:text-6xl text-cream mt-2">Garantir Ingressos</h1>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Formulário Interativo -->
+                <div class="lg:col-span-7 bg-black/40 border border-cream-subtle p-8 space-y-8">
+                    <h2 class="font-display text-2xl text-cream border-b border-cream-subtle pb-4">1. Selecione o Tipo de Ingresso</h2>
+                    
+                    <!-- Data -->
+                    <div class="space-y-3">
+                        <label class="text-xs uppercase tracking-wider text-cream-muted font-mono">Data do Evento</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button type="button" onclick="selectTicketDay('dia1')" id="ticket-day-dia1" class="ticket-day-btn text-left p-4 border border-cream bg-purple-accent/30 text-cream text-sm font-medium">
+                                <div class="font-display text-base">Dia 1 (17/10)</div>
+                                <div class="text-xs text-cream-muted mt-1">Billie Eilish, Clairo</div>
+                            </button>
+                            <button type="button" onclick="selectTicketDay('dia2')" id="ticket-day-dia2" class="ticket-day-btn text-left p-4 border border-cream-subtle hover:border-cream text-cream-muted hover:text-cream text-sm">
+                                <div class="font-display text-base">Dia 2 (18/10)</div>
+                                <div class="text-xs text-cream-muted mt-1">Melanie, Lana Del Rey</div>
+                            </button>
+                            <button type="button" onclick="selectTicketDay('dia3')" id="ticket-day-dia3" class="ticket-day-btn text-left p-4 border border-cream-subtle hover:border-cream text-cream-muted hover:text-cream text-sm">
+                                <div class="font-display text-base">Dia 3 (19/10)</div>
+                                <div class="text-xs text-cream-muted mt-1">Rita Lee, Sabrina Carpenter</div>
+                            </button>
+                            <button type="button" onclick="selectTicketDay('passaporte')" id="ticket-day-passaporte" class="ticket-day-btn text-left p-4 border border-cream-subtle hover:border-cream text-cream-muted hover:text-cream text-sm">
+                                <div class="font-display text-base">Passaporte (3 Dias)</div>
+                                <div class="text-xs text-purple-300 mt-1">Economize 25%</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Setor -->
+                    <div class="space-y-3">
+                        <label class="text-xs uppercase tracking-wider text-cream-muted font-mono">Selecione o Setor</label>
+                        <div class="space-y-3">
+                            <label class="flex items-center justify-between p-4 border border-cream-subtle bg-violet-dark/40 cursor-pointer hover:border-cream">
+                                <div class="flex items-center space-x-3">
+                                    <input type="radio" name="sector" value="pista" checked onclick="calculateTicketPrice()" class="accent-purple-accent">
+                                    <div>
+                                        <div class="font-display text-base text-cream">Pista Comum</div>
+                                        <div class="text-xs text-cream-muted">Acesso a todos os palcos e praça de alimentação.</div>
+                                    </div>
+                                </div>
+                                <span class="font-mono text-sm text-cream" id="price-sector-pista">R$ 220,00</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-4 border border-cream-subtle bg-violet-dark/40 cursor-pointer hover:border-cream">
+                                <div class="flex items-center space-x-3">
+                                    <input type="radio" name="sector" value="premium" onclick="calculateTicketPrice()" class="accent-purple-accent">
+                                    <div>
+                                        <div class="font-display text-base text-cream">Pista Premium</div>
+                                        <div class="text-xs text-cream-muted">Área privilegiada em frente ao Palco Principal.</div>
+                                    </div>
+                                </div>
+                                <span class="font-mono text-sm text-cream" id="price-sector-premium">R$ 450,00</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-4 border border-cream-subtle bg-violet-dark/40 cursor-pointer hover:border-cream">
+                                <div class="flex items-center space-x-3">
+                                    <input type="radio" name="sector" value="vip" onclick="calculateTicketPrice()" class="accent-purple-accent">
+                                    <div>
+                                        <div class="font-display text-base text-cream">Camarote VIP</div>
+                                        <div class="text-xs text-cream-muted">Open bar, visão panorâmica e lounge exclusivo.</div>
+                                    </div>
+                                </div>
+                                <span class="font-mono text-sm text-cream" id="price-sector-vip">R$ 890,00</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Modalidade -->
+                    <div class="space-y-3">
+                        <label class="text-xs uppercase tracking-wider text-cream-muted font-mono">Modalidade</label>
+                        <select id="ticket-category" onchange="calculateTicketPrice()" class="w-full p-4 rounded-none text-sm">
+                            <option value="inteira">Inteira</option>
+                            <option value="meia">Meia-Entrada (Estudante / Idoso / PCD)</option>
+                            <option value="social">Meia Social (Doação de 1kg de alimento)</option>
+                        </select>
+                    </div>
+
+                    <!-- Quantidade -->
+                    <div class="space-y-3">
+                        <label class="text-xs uppercase tracking-wider text-cream-muted font-mono">Quantidade</label>
+                        <div class="flex items-center space-x-4">
+                            <button type="button" onclick="updateQuantity(-1)" class="w-10 h-10 border border-cream-subtle hover:border-cream text-lg font-bold flex items-center justify-center">-</button>
+                            <span id="ticket-qty" class="font-mono text-xl w-8 text-center">1</span>
+                            <button type="button" onclick="updateQuantity(1)" class="w-10 h-10 border border-cream-subtle hover:border-cream text-lg font-bold flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumo e Checkout -->
+                <div class="lg:col-span-5 bg-black/60 border border-purple-accent/60 p-8 space-y-6 sticky top-28">
+                    <h2 class="font-display text-2xl text-cream border-b border-cream-subtle pb-4">Resumo da Compra</h2>
+                    
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between text-cream-muted">
+                            <span>Ingresso Selecionado:</span>
+                            <span class="text-cream font-medium" id="summary-day">Dia 1 (17/10)</span>
+                        </div>
+                        <div class="flex justify-between text-cream-muted">
+                            <span>Setor:</span>
+                            <span class="text-cream font-medium" id="summary-sector">Pista Comum</span>
+                        </div>
+                        <div class="flex justify-between text-cream-muted">
+                            <span>Modalidade:</span>
+                            <span class="text-cream font-medium" id="summary-category">Inteira</span>
+                        </div>
+                        <div class="flex justify-between text-cream-muted">
+                            <span>Quantidade:</span>
+                            <span class="text-cream font-medium" id="summary-qty">1x</span>
+                        </div>
+                        <div class="border-t border-cream-subtle pt-3 flex justify-between text-base font-semibold">
+                            <span>Total:</span>
+                            <span class="text-cream font-mono text-xl" id="summary-total">R$ 220,00</span>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="alert('Redirecionando para o gateway seguro de pagamento...')" class="w-full bg-cream text-violet-dark py-4 text-center font-display font-medium text-base hover:bg-white transition-all shadow-lg">
+                        Finalizar Compra
+                    </button>
+
+                    <div class="text-xs text-cream-muted space-y-1 text-center pt-2">
+                        <p>✓ Compra 100% segura com criptografia</p>
+                        <p>✓ Em até 10x sem juros no cartão ou Pix</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-cream-subtle bg-violet-dark py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-cream-muted">
+            <div><span class="font-display italic text-lg text-cream">Ritmo Roxo</span> — Festival de Pop Alternativo 2026</div>
+            <p class="text-xs">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        let selectedDay = 'dia1';
+        let currentQty = 1;
+
+        const basePrices = {
+            dia1: { pista: 220, premium: 450, vip: 890 },
+            dia2: { pista: 220, premium: 450, vip: 890 },
+            dia3: { pista: 220, premium: 450, vip: 890 },
+            passaporte: { pista: 520, premium: 1050, vip: 2100 }
+        };
+
+        function selectTicketDay(day) {
+            selectedDay = day;
+            document.querySelectorAll('.ticket-day-btn').forEach(btn => {
+                btn.className = 'ticket-day-btn text-left p-4 border border-cream-subtle text-cream-muted hover:text-cream text-sm';
+            });
+            document.getElementById('ticket-day-' + day).className = 'ticket-day-btn text-left p-4 border border-cream bg-purple-accent/30 text-cream text-sm font-medium';
+            calculateTicketPrice();
+        }
+
+        function updateQuantity(change) {
+            currentQty = Math.max(1, Math.min(6, currentQty + change));
+            document.getElementById('ticket-qty').textContent = currentQty;
+            calculateTicketPrice();
+        }
+
+        function calculateTicketPrice() {
+            const sector = document.querySelector('input[name="sector"]:checked').value;
+            const category = document.getElementById('ticket-category').value;
+            
+            let basePrice = basePrices[selectedDay][sector];
+            let finalUnitPrice = basePrice;
+
+            if (category === 'meia' || category === 'social') {
+                finalUnitPrice = basePrice * 0.5;
+            }
+
+            const total = finalUnitPrice * currentQty;
+
+            document.getElementById('price-sector-pista').textContent = 'R$ ' + (basePrices[selectedDay].pista * (category !== 'inteira' ? 0.5 : 1)).toFixed(2).replace('.', ',');
+            document.getElementById('price-sector-premium').textContent = 'R$ ' + (basePrices[selectedDay].premium * (category !== 'inteira' ? 0.5 : 1)).toFixed(2).replace('.', ',');
+            document.getElementById('price-sector-vip').textContent = 'R$ ' + (basePrices[selectedDay].vip * (category !== 'inteira' ? 0.5 : 1)).toFixed(2).replace('.', ',');
+
+            const dayLabels = { 
+                dia1: 'Dia 1 (17/10)', 
+                dia2: 'Dia 2 (18/10)', 
+                dia3: 'Dia 3 (19/10)', 
+                passaporte: 'Passaporte (3 Dias)' 
+            };
+            const sectorLabels = { pista: 'Pista Comum', premium: 'Pista Premium', vip: 'Camarote VIP' };
+            const catLabels = { inteira: 'Inteira', meia: 'Meia-Entrada', social: 'Meia Social' };
+
+            document.getElementById('summary-day').textContent = dayLabels[selectedDay];
+            document.getElementById('summary-sector').textContent = sectorLabels[sector];
+            document.getElementById('summary-category').textContent = catLabels[category];
+            document.getElementById('summary-qty').textContent = currentQty + 'x';
+            document.getElementById('summary-total').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+        }
+    </script>
+</body>
+</html>

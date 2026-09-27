@@ -3,69 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ritimo Roxo | Festival</title>
-    <!-- Fontes do Google -->
+    <title>Ritmo Roxo — Festival de Pop Alternativo 2026</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-    <!-- Arquivo CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'violet-dark': '#241A30',
+                        'purple-accent': '#51307A',
+                        'cream': '#EFE6D2',
+                        'cream-muted': 'rgba(239, 230, 210, 0.7)',
+                        'cream-subtle': 'rgba(239, 230, 210, 0.15)',
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header class="header">
-        <div class="logo">Ritimo Roxo</div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#lineup">Line-up</a></li>
-                <li><a href="#ingressos">Ingressos</a></li>
-                <li><a href="#informacoes">Informações</a></li>
-                <li><a href="#contato">Dúvidas e contato</a></li>
-            </ul>
-        </nav>
+<body class="bg-violet-dark text-cream min-h-screen flex flex-col selection:bg-purple-accent selection:text-cream">
+
+    <!-- Player de Áudio do Vinil -->
+    <audio id="vinyl-audio" src="/mp3/Venere_Vai_Venus_-_Prel_dio_(mp3.pm).mp3" preload="auto" loop></audio>
+
+    <header class="w-full border-b border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent">
+                Ritmo Roxo
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="index.html" class="text-cream border-b-2 border-cream pb-1 font-semibold">Início</a>
+                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Line-up</a>
+                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Ingressos</a>
+                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Informações</a>
+                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Dúvidas e contato</a>
+            </nav>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b border-cream-subtle px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-lg text-cream py-1 font-display">Início</a>
+            <a href="lineup.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display">Line-up</a>
+            <a href="ingressos.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display">Ingressos</a>
+            <a href="informacoes.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display">Informações</a>
+            <a href="faq.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display">Dúvidas e contato</a>
+        </div>
     </header>
 
-    <main>
-        <section id="inicio" class="hero">
-            <div class="hero-container">
-                <p class="chamada">A desordem nunca soou tão bem. Liberte-se.</p>
-                <h1>RITIMO ROXO</h1>
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 min-h-[calc(100vh-80px)] flex items-center overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
                 
-                <div class="info-festival">
-                    <div class="box-info data">17 e 18 de Outubro</div>
-                    <div class="box-info local">Espaço Unimed</div>
+                <div class="lg:col-span-7 space-y-8 z-10">
+                    <h1 class="font-display font-light text-6xl sm:text-7xl lg:text-8xl xl:text-[9rem] leading-[0.88] tracking-tight text-cream">
+                        Ritmo<br>Roxo
+                    </h1>
+
+                    <p class="text-lg sm:text-xl lg:text-2xl font-light text-cream max-w-xl leading-relaxed">
+                        Três dias de <strong class="font-semibold text-cream">imersão sonora</strong> e estética no <strong class="font-semibold text-cream">Espaço Unimed</strong>, em <strong class="font-semibold text-cream">São Paulo</strong>.
+                    </p>
+
+                    <div class="space-y-1 text-sm sm:text-base font-normal">
+                        <p class="text-cream font-medium tracking-wide">17, 18 e 19 de outubro de 2026</p>
+                        <p class="text-cream-muted">Espaço Unimed, Rua Tagipuru, 795 — Barra Funda, SP</p>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap items-center gap-6">
+                        <a href="ingressos.html" class="bg-cream text-violet-dark px-8 py-3.5 text-sm sm:text-base font-display font-medium tracking-wide hover:bg-white transition-all shadow-lg inline-block">
+                            Ver ingressos
+                        </a>
+                        <a href="lineup.html" class="text-cream underline underline-offset-8 hover:text-purple-300 text-sm sm:text-base font-medium flex items-center group">
+                            Conhecer o line-up
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
-                <a href="#ingressos" class="btn-comprar">Garantir Ingresso</a>
+                <div class="lg:col-span-5 relative flex justify-center lg:justify-end items-center py-6">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[440px] lg:h-[440px] flex items-center justify-center">
+                        <div id="vinyl-disc" class="vinyl-grooves vinyl-spinning vinyl-paused relative w-full h-full rounded-full border-4 border-black/80 shadow-2xl overflow-hidden flex items-center justify-center">
+                            <div class="absolute inset-0 vinyl-sheen pointer-events-none"></div>
+                            <div class="absolute w-[80%] h-[80%] rounded-full border border-cream/5 pointer-events-none"></div>
+                            <div class="absolute w-[60%] h-[60%] rounded-full border border-cream/10 pointer-events-none"></div>
+                            <div class="absolute w-[40%] h-[40%] rounded-full border border-cream/5 pointer-events-none"></div>
+                            
+                            <div class="w-[36%] h-[36%] rounded-full bg-purple-accent border-2 border-cream/20 shadow-inner flex flex-col items-center justify-center text-center p-2 relative z-10">
+                                <span class="font-display italic text-xs sm:text-sm text-cream font-medium tracking-tighter leading-none">Ritmo Roxo</span>
+                                <div class="w-2.5 h-2.5 rounded-full bg-violet-dark border border-cream/40 my-1"></div>
+                                <span class="text-[10px] sm:text-xs text-cream-muted font-sans tracking-widest">3 Dias</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-0 right-2 z-20 pointer-events-none">
+                            <svg class="w-32 h-44 sm:w-40 sm:h-52 tonearm" id="tonearm-svg" viewBox="0 0 100 150">
+                                <circle cx="20" cy="20" r="14" fill="#3A2552" stroke="#EFE6D2" stroke-width="2"/>
+                                <circle cx="20" cy="20" r="6" fill="#EFE6D2"/>
+                                <path d="M 20 20 L 35 80 L 25 120" fill="none" stroke="#EFE6D2" stroke-width="3" stroke-linecap="round"/>
+                                <rect x="18" y="118" width="14" height="20" rx="2" fill="#51307A" stroke="#EFE6D2" stroke-width="1.5" transform="rotate(-15 25 128)"/>
+                            </svg>
+                        </div>
+
+                        <button id="vinyl-play-btn" onclick="toggleVinylAudio()" class="absolute -bottom-4 bg-purple-accent/90 backdrop-blur border border-cream/30 text-cream px-5 py-2.5 rounded-full text-xs font-display tracking-wider hover:bg-purple-accent transition-all flex items-center space-x-2 shadow-xl z-30">
+                            <span id="play-icon-svg">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                            <span id="play-btn-text">Ouvir Experiência Sonora</span>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section id="lineup" class="lineup">
-            <h2>Headliners</h2>
-            <div class="grid-atracoes">
-                <article class="card-atracao atracao-1">
-                    <h3>Billie Eilish</h3>
-                </article>
+        <!-- Seção: Atração Principal por noite -->
+        <section class="border-t border-cream-subtle bg-violet-dark py-20">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <h2 class="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-cream mb-16 tracking-tight">
+                    HeadLiners
+                </h2>
 
-                <article class="card-atracao atracao-2">
-                    <h3>Melanie Martinez</h3>
-                </article>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-cream-subtle">
+                    <div class="pt-6 md:pt-0 md:px-6 first:pl-0 space-y-4">
+                        <span class="text-xs sm:text-sm text-cream-muted uppercase tracking-widest font-mono">Sexta, 17 de outubro</span>
+                        <h3 class="font-display text-2xl sm:text-3xl text-cream font-normal">Billie Eilish</h3>
+                        <p class="text-cream-muted text-sm sm:text-base font-light leading-relaxed">
+                            Sonoridade densa e hipnótica do pop alternativo mundial em uma performance imersiva, minimalista e visceral.
+                        </p>
+                        <p class="text-xs text-purple-300 font-mono pt-2">Palco Principal • 23:00</p>
+                    </div>
 
-                <article class="card-atracao atracao-3">
-                    <h3>Rita Lee</h3>
-                </article>
+                    <div class="pt-6 md:pt-0 md:px-6 space-y-4">
+                        <span class="text-xs sm:text-sm text-cream-muted uppercase tracking-widest font-mono">Sábado, 18 de outubro</span>
+                        <h3 class="font-display text-2xl sm:text-3xl text-cream font-normal">Melanie Martinez</h3>
+                        <p class="text-cream-muted text-sm sm:text-base font-light leading-relaxed">
+                            Universos conceituais e narrativas profundas em um espetáculo visual e auditivo de estética surrealista.
+                        </p>
+                        <p class="text-xs text-purple-300 font-mono pt-2">Palco Principal • 21:15</p>
+                    </div>
+
+                    <div class="pt-6 md:pt-0 md:px-6 last:pr-0 space-y-4">
+                        <span class="text-xs sm:text-sm text-cream-muted uppercase tracking-widest font-mono">Domingo, 19 de outubro</span>
+                        <h3 class="font-display text-2xl sm:text-3xl text-cream font-normal">Rita Lee</h3>
+                        <p class="text-cream-muted text-sm sm:text-base font-light leading-relaxed">
+                            A eterna rainha do rock e pop alternativo brasileiro encerrando o festival com uma celebração inesquecível de clássicos, irreverência e atitude.
+                        </p>
+                        <p class="text-xs text-purple-300 font-mono pt-2">Palco Principal • 22:30</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: O Espaço -->
+        <section class="border-t border-cream-subtle bg-violet-dark py-20">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <div class="lg:col-span-4">
+                        <h2 class="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-cream tracking-tight">O espaço</h2>
+                    </div>
+                    <div class="lg:col-span-8 space-y-6 text-cream-muted text-base sm:text-lg font-light leading-relaxed">
+                        <p>
+                            O <strong class="font-medium text-cream">Espaço Unimed</strong> foi selecionado como cenário do Ritmo Roxo por sua acústica de nível internacional e estrutura modular imersiva. Situado no coração de São Paulo na Barra Funda, o ambiente ganha cenografia exclusiva nas três noites de festival.
+                        </p>
+                        <p>
+                            O Salão Principal recebe os grandes shows com tecnologia de iluminação dinâmica, enquanto o Lounge Violeta oferece experiências sensoriais, ativações visuais e gastronomia selecionada. Portões abrem pontualmente às 16h em todos os dias.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer id="contato" class="footer">
-        <h2 class="footer-logo">Ritimo Roxo</h2>
-        <p class="footer-texto">Caos, música e arte.</p>
-        <div class="footer-links">
-            <a href="#informacoes">Informações</a>
-            <a href="#contato">Contato</a>
+    <footer class="border-t border-cream-subtle bg-violet-dark py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-cream-muted">
+            <div><span class="font-display italic text-lg text-cream">Ritmo Roxo</span> — Festival de Pop Alternativo 2026</div>
+            <p class="text-xs">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
         </div>
-        <p class="direitos">&copy; 2026 Ritimo Roxo. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        let isPlaying = false;
+
+        function toggleVinylAudio() {
+            const vinyl = document.getElementById('vinyl-disc');
+            const tonearm = document.getElementById('tonearm-svg');
+            const btnText = document.getElementById('play-btn-text');
+            const iconContainer = document.getElementById('play-icon-svg');
+            const audio = document.getElementById('vinyl-audio');
+
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    vinyl.classList.remove('vinyl-paused');
+                    tonearm.classList.add('tonearm-active');
+                    btnText.textContent = 'Pausar Áudio';
+                    iconContainer.innerHTML = '<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log('Permissão de áudio requerida pelo navegador:', err);
+                });
+            } else {
+                audio.pause();
+                vinyl.classList.add('vinyl-paused');
+                tonearm.classList.remove('tonearm-active');
+                btnText.textContent = 'Ouvir Experiência Sonora';
+                iconContainer.innerHTML = '<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+                isPlaying = false;
+            }
+        }
+    </script>
 </body>
 </html>
