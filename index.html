@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ritmo Roxo — Festival de Pop Alternativo 2026</title>
-    
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+   
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,87 +29,151 @@
             }
         }
     </script>
+    <style>
+        /* Textura de fundo com SVG repetido (Nenhum gradiente utilizado) */
+        .bg-dots {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23EFE6D2' fill-opacity='0.1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        /* Animação para o letreiro (Marquee) */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+
+        /* Texto vazado para decoração */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(239, 230, 210, 0.2);
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-violet-dark text-cream min-h-screen flex flex-col selection:bg-purple-accent selection:text-cream">
+<body class="bg-violet-dark text-cream min-h-screen flex flex-col selection:bg-purple-accent selection:text-cream relative bg-dots">
+
+    <!-- Decoração geométrica fixa -->
+    <div class="fixed top-24 left-6 text-cream-subtle font-mono text-xl pointer-events-none z-0 hidden lg:block">+</div>
+    <div class="fixed bottom-12 right-6 text-cream-subtle font-mono text-xl pointer-events-none z-0 hidden lg:block">+</div>
 
     <!-- Player de Áudio do Vinil -->
     <audio id="vinyl-audio" src="/audio/Venere_Vai_Venus_-_Prel_dio_(mp3.pm).mp3" preload="auto" loop></audio>
 
-    <header class="w-full border-b border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
+    <header class="w-full border-b-2 border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent">
+            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent transition-colors flex items-center gap-2">
+                <!-- Ícone decorativo no logo -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-accent">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="currentColor"/>
+                </svg>
                 Ritmo Roxo
             </a>
 
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide uppercase font-display">
                 <a href="index.html" class="text-cream border-b-2 border-cream pb-1 font-semibold">Início</a>
-                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Line-up</a>
-                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Ingressos</a>
-                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Informações</a>
-                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Dúvidas e contato</a>
+                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Line-up</a>
+                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Ingressos</a>
+                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Informações</a>
+                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Dúvidas e Contato</a>
             </nav>
 
-            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2 focus:outline-none">
+            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2 focus:outline-none border border-cream-subtle rounded-md">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b border-cream-subtle px-6 py-6 space-y-4">
-            <a href="index.html" class="block text-lg text-cream py-1 font-display">Início</a>
-            <a href="lineup.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display">Line-up</a>
-            <a href="ingressos.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display">Ingressos</a>
-            <a href="informacoes.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display">Informações</a>
-            <a href="faq.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display">Dúvidas e contato</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b-2 border-cream-subtle px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-lg text-cream py-1 font-display uppercase tracking-wider">Início</a>
+            <a href="lineup.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Line-up</a>
+            <a href="ingressos.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Ingressos</a>
+            <a href="informacoes.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Informações</a>
+            <a href="faq.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Dúvidas e Contato</a>
         </div>
     </header>
 
-    <main class="flex-grow">
+    <main class="flex-grow relative z-10">
         <!-- Hero Section -->
-        <section class="relative max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 min-h-[calc(100vh-80px)] flex items-center overflow-hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
-                
-                <div class="lg:col-span-7 space-y-8 z-10">
-                    <h1 class="font-display font-light text-6xl sm:text-7xl lg:text-8xl xl:text-[9rem] leading-[0.88] tracking-tight text-cream">
-                        Ritmo<br>Roxo
-                    </h1>
+        <section class="relative max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 min-h-[calc(100vh-140px)] flex items-center overflow-hidden">
+            <!-- Decoração: Estrela grande de fundo -->
+            <svg class="absolute -top-20 -left-20 w-[400px] h-[400px] text-cream opacity-5 pointer-events-none" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/>
+            </svg>
 
-                    <p class="text-lg sm:text-xl lg:text-2xl font-light text-cream max-w-xl leading-relaxed">
-                        Três dias de <strong class="font-semibold text-cream">imersão sonora</strong> e estética no <strong class="font-semibold text-cream">Espaço Unimed</strong>, em <strong class="font-semibold text-cream">São Paulo</strong>.
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+               
+                <div class="lg:col-span-7 space-y-8 z-10 relative">
+                    <!-- Decoração: Emblema -->
+                    <div class="inline-block border border-cream-subtle px-4 py-1.5 rounded-full text-xs font-mono tracking-[0.2em] uppercase text-cream mb-4">
+                        <span class="text-purple-accent mr-2">●</span> Edição 2026
+                    </div>
+
+                    <div class="relative">
+                        <!-- Título de fundo vazado (Decorativo) -->
+                        <h1 class="absolute -top-6 -left-4 font-display font-bold text-6xl sm:text-7xl lg:text-8xl xl:text-[9.5rem] leading-[0.88] tracking-tight text-outline select-none pointer-events-none">
+                            Ritmo<br>Roxo
+                        </h1>
+                        <!-- Título Principal -->
+                        <h1 class="relative font-display font-light text-6xl sm:text-7xl lg:text-8xl xl:text-[9rem] leading-[0.88] tracking-tight text-cream">
+                            Ritmo<br><span class="italic font-bold">Roxo</span>
+                        </h1>
+                    </div>
+
+                    <p class="text-lg sm:text-xl lg:text-2xl font-light text-cream max-w-xl leading-relaxed border-l-2 border-purple-accent pl-6">
+                        Três dias de <strong class="font-semibold text-cream">imersão sonora</strong> e estética no <strong class="font-semibold text-cream">Espaço Unimed</strong>, em São Paulo.
                     </p>
 
-                    <div class="space-y-1 text-sm sm:text-base font-normal">
-                        <p class="text-cream font-medium tracking-wide">17, 18 e 19 de outubro de 2026</p>
-                        <p class="text-cream-muted">Espaço Unimed, Rua Tagipuru, 795 — Barra Funda, SP</p>
+                    <div class="space-y-2 text-sm sm:text-base font-normal bg-white/[0.02] p-5 border border-cream-subtle inline-block">
+                        <p class="text-cream font-medium tracking-wide flex items-center gap-2">
+                            <svg class="w-4 h-4 text-purple-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            17, 18 e 19 de outubro de 2026
+                        </p>
+                        <p class="text-cream-muted flex items-center gap-2">
+                            <svg class="w-4 h-4 text-purple-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Espaço Unimed — Barra Funda, SP
+                        </p>
                     </div>
 
                     <div class="pt-4 flex flex-wrap items-center gap-6">
-                        <a href="ingressos.html" class="bg-cream text-violet-dark px-8 py-3.5 text-sm sm:text-base font-display font-medium tracking-wide hover:bg-white transition-all shadow-lg inline-block">
-                            Ver ingressos
+                        <!-- Botão com Sombra Sólida (Sem gradientes) -->
+                        <a href="ingressos.html" class="bg-cream text-violet-dark px-8 py-4 text-sm sm:text-base font-display font-bold tracking-widest uppercase hover:bg-white hover:-translate-y-1 transition-all shadow-[6px_6px_0_0_#51307A] active:translate-y-0 active:shadow-none border border-violet-dark">
+                            Garantir Ingressos
                         </a>
-                        <a href="lineup.html" class="text-cream underline underline-offset-8 hover:text-purple-300 text-sm sm:text-base font-medium flex items-center group">
-                            Conhecer o line-up
-                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        <a href="lineup.html" class="text-cream uppercase tracking-wider hover:text-purple-300 text-sm font-display font-medium flex items-center group border-b border-cream-subtle hover:border-purple-accent pb-1 transition-colors">
+                            Ver Line-up
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                             </svg>
                         </a>
                     </div>
                 </div>
 
                 <div class="lg:col-span-5 relative flex justify-center lg:justify-end items-center py-6">
+                    <!-- Decoração: Círculo de borda ao redor do vinil -->
+                    <div class="absolute w-[460px] h-[460px] rounded-full border border-dashed border-cream-subtle/40 animate-[spin_60s_linear_infinite] hidden lg:block pointer-events-none"></div>
+
                     <div class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[440px] lg:h-[440px] flex items-center justify-center">
-                        <div id="vinyl-disc" class="vinyl-grooves vinyl-spinning vinyl-paused relative w-full h-full rounded-full border-4 border-black/80 shadow-2xl overflow-hidden flex items-center justify-center">
-                            <div class="absolute inset-0 vinyl-sheen pointer-events-none"></div>
-                            <div class="absolute w-[80%] h-[80%] rounded-full border border-cream/5 pointer-events-none"></div>
-                            <div class="absolute w-[60%] h-[60%] rounded-full border border-cream/10 pointer-events-none"></div>
-                            <div class="absolute w-[40%] h-[40%] rounded-full border border-cream/5 pointer-events-none"></div>
+                        <div id="vinyl-disc" class="vinyl-grooves vinyl-spinning vinyl-paused relative w-full h-full rounded-full border-4 border-black/80 shadow-[0_0_40px_rgba(36,26,48,0.8)] overflow-hidden flex items-center justify-center bg-[#111]">
                             
-                            <div class="w-[36%] h-[36%] rounded-full bg-purple-accent border-2 border-cream/20 shadow-inner flex flex-col items-center justify-center text-center p-2 relative z-10">
-                                <span class="font-display italic text-xs sm:text-sm text-cream font-medium tracking-tighter leading-none">Ritmo Roxo</span>
-                                <div class="w-2.5 h-2.5 rounded-full bg-violet-dark border border-cream/40 my-1"></div>
-                                <span class="text-[10px] sm:text-xs text-cream-muted font-sans tracking-widest">3 Dias</span>
+                            <!-- Ranhuras do disco feitas com bordas simples -->
+                            <div class="absolute w-[85%] h-[85%] rounded-full border border-white/5 pointer-events-none"></div>
+                            <div class="absolute w-[70%] h-[70%] rounded-full border border-white/10 pointer-events-none"></div>
+                            <div class="absolute w-[55%] h-[55%] rounded-full border border-white/5 pointer-events-none"></div>
+                           
+                            <div class="w-[36%] h-[36%] rounded-full bg-purple-accent border-[3px] border-cream flex flex-col items-center justify-center text-center p-2 relative z-10">
+                                <!-- Elementos decorativos no centro do disco -->
+                                <span class="font-display italic text-xs sm:text-sm text-cream font-bold tracking-tighter leading-none mb-1">RITMO<br>ROXO</span>
+                                <div class="w-3 h-3 rounded-full bg-violet-dark border-2 border-cream my-1"></div>
+                                <div class="flex justify-between w-full px-4 text-[7px] text-cream/70 font-mono tracking-widest mt-1">
+                                    <span>LADO A</span>
+                                    <span>33 RPM</span>
+                                </div>
                             </div>
                         </div>
 
@@ -122,11 +186,12 @@
                             </svg>
                         </div>
 
-                        <button id="vinyl-play-btn" onclick="toggleVinylAudio()" class="absolute -bottom-4 bg-purple-accent/90 backdrop-blur border border-cream/30 text-cream px-5 py-2.5 rounded-full text-xs font-display tracking-wider hover:bg-purple-accent transition-all flex items-center space-x-2 shadow-xl z-30">
+                        <!-- Botão de play com sombra sólida decorativa -->
+                        <button id="vinyl-play-btn" onclick="toggleVinylAudio()" class="absolute -bottom-6 bg-purple-accent border border-cream text-cream px-6 py-3 text-xs font-display font-bold uppercase tracking-[0.15em] hover:bg-violet-dark hover:text-cream transition-colors flex items-center space-x-2 shadow-[4px_4px_0_0_#EFE6D2] z-30">
                             <span id="play-icon-svg">
                                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </span>
-                            <span id="play-btn-text">Ouvir Experiência Sonora</span>
+                            <span id="play-btn-text">Tocar Experiência</span>
                         </button>
                     </div>
                 </div>
@@ -134,68 +199,228 @@
             </div>
         </section>
 
-        <!-- Seção: Atração Principal por noite -->
-        <section class="border-t border-cream-subtle bg-violet-dark py-20">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12">
-                <h2 class="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-cream mb-16 tracking-tight">
-                    HeadLiners
-                </h2>
+        <!-- Faixa de Letreiro Decorativo (Marquee) -->
+        <div class="w-full bg-purple-accent border-y-2 border-cream py-3 overflow-hidden flex relative z-20">
+            <div class="animate-marquee text-cream font-display font-bold text-sm tracking-[0.3em] uppercase">
+                <span class="mx-4">◆</span> RITMO ROXO 2026 
+                <span class="mx-4">◆</span> ESPAÇO UNIMED 
+                <span class="mx-4">◆</span> 17, 18 E 19 DE OUTUBRO 
+                <span class="mx-4">◆</span> POP ALTERNATIVO 
+                <span class="mx-4">◆</span> INGRESSOS DISPONÍVEIS 
+                <span class="mx-4">◆</span> RITMO ROXO 2026 
+                <span class="mx-4">◆</span> ESPAÇO UNIMED 
+                <span class="mx-4">◆</span> 17, 18 E 19 DE OUTUBRO 
+                <span class="mx-4">◆</span> POP ALTERNATIVO 
+                <span class="mx-4">◆</span> INGRESSOS DISPONÍVEIS 
+            </div>
+        </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-cream-subtle">
-                    <div class="pt-6 md:pt-0 md:px-6 first:pl-0 space-y-4">
-                        <span class="text-xs sm:text-sm text-cream-muted uppercase tracking-widest font-mono">Sexta, 17 de outubro</span>
-                        <h3 class="font-display text-2xl sm:text-3xl text-cream font-normal">Billie Eilish</h3>
-                        <p class="text-cream-muted text-sm sm:text-base font-light leading-relaxed">
-                            Sonoridade densa e hipnótica do pop alternativo mundial em uma performance imersiva, minimalista e visceral.
-                        </p>
-                        <p class="text-xs text-purple-300 font-mono pt-2">Palco Principal • 23:00</p>
+        <!-- Seção: Headliners em formato de Ingressos (Agora em pé/Grid 3 colunas) -->
+        <section class="border-t border-cream-subtle bg-violet-dark/95 py-24 relative">
+            
+            <!-- Elemento decorativo de fundo -->
+            <div class="absolute right-0 top-40 text-cream-subtle/30 font-display text-[15rem] leading-none font-bold select-none pointer-events-none overflow-hidden h-full hidden xl:block">
+                TICKETS
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-cream-subtle/50 pb-6">
+                    <div>
+                        <span class="flex items-center gap-2 text-[11px] text-[#b498d9] tracking-[0.2em] uppercase font-mono mb-3">
+                            <span class="w-8 h-[1px] bg-[#b498d9]"></span> Grandes Atrações
+                        </span>
+                        <h2 class="font-display font-bold text-5xl lg:text-7xl text-cream tracking-tighter">
+                            Headliners
+                        </h2>
+                    </div>
+                    <!-- Link sem o card/fundo em volta, estilo texto limpo -->
+                    <a href="lineup.html" class="group flex items-center gap-3 text-xs text-cream-muted hover:text-cream tracking-[0.2em] uppercase font-mono transition-colors pb-1 border-b border-cream-subtle hover:border-cream">
+                        Ver programação completa 
+                        <span class="text-cream group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </a>
+                </div>
+
+                <!-- Lista de Ingressos Decorados com Sombra Sólida - Grid 3 Colunas -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full mx-auto">
+                    
+                    <!-- INGRESSO 1: Sexta -->
+                    <div class="group relative flex flex-col bg-violet-dark border-2 border-cream shadow-[8px_8px_0_0_#51307A] hover:shadow-[12px_12px_0_0_#EFE6D2] hover:-translate-y-1 hover:-translate-x-1 transition-all duration-300 h-full">
+                        <div class="p-8 flex flex-col flex-grow">
+                            <div class="flex justify-between items-center mb-6 border-b border-dashed border-cream-subtle pb-4">
+                                <span class="text-[12px] text-cream font-bold tracking-[0.2em] uppercase font-mono">Sexta &bull; 17 Out</span>
+                                <span class="bg-cream text-violet-dark font-bold text-[10px] px-3 py-1 tracking-widest uppercase border border-violet-dark shadow-[2px_2px_0_0_#51307A]">Dia 1</span>
+                            </div>
+                            <h3 class="font-display text-4xl xl:text-5xl text-cream font-bold mb-4 italic leading-none">Billie Eilish</h3>
+                            <p class="text-cream-muted text-sm font-light leading-relaxed">
+                                Sonoridade densa e hipnótica do pop alternativo mundial em uma performance imersiva, minimalista e visceral.
+                            </p>
+                        </div>
+                        
+                        <!-- Picote (Horizontal) -->
+                        <div class="relative h-8 flex items-center justify-center w-full">
+                            <div class="absolute left-6 right-6 border-t-2 border-dashed border-cream"></div>
+                            <div class="absolute -left-[2px] w-6 h-6 bg-violet-dark border-2 border-cream border-l-0 rounded-r-full"></div>
+                            <div class="absolute -right-[2px] w-6 h-6 bg-violet-dark border-2 border-cream border-r-0 rounded-l-full"></div>
+                        </div>
+
+                        <!-- Canhoto Inferior -->
+                        <div class="bg-purple-accent/10 p-8 flex flex-col gap-6 relative overflow-hidden">
+                            <!-- Marca d'água decorativa no canhoto -->
+                            <div class="absolute -right-2 -bottom-2 text-7xl text-purple-accent/20 font-display font-bold select-none pointer-events-none">01</div>
+                            
+                            <div class="flex flex-row justify-between items-start gap-4 relative z-10">
+                                <div>
+                                    <p class="text-[9px] text-cream-muted uppercase tracking-[0.2em] font-mono mb-1">Setor</p>
+                                    <p class="text-sm font-mono text-cream font-bold">Palco Principal</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[9px] text-cream-muted uppercase tracking-[0.2em] font-mono mb-1">Horário</p>
+                                    <p class="text-lg font-display font-bold text-cream">23:00</p>
+                                </div>
+                            </div>
+                            <!-- Código de Barras Decorativo em SVG -->
+                            <div class="w-full h-12 text-cream relative z-10 border-t border-cream-subtle pt-4">
+                                <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 20" fill="currentColor">
+                                    <rect x="0" y="0" width="2" height="20"/><rect x="4" y="0" width="1" height="20"/><rect x="7" y="0" width="3" height="20"/><rect x="12" y="0" width="1" height="20"/><rect x="15" y="0" width="5" height="20"/><rect x="22" y="0" width="2" height="20"/><rect x="26" y="0" width="1" height="20"/><rect x="29" y="0" width="4" height="20"/><rect x="35" y="0" width="1" height="20"/><rect x="38" y="0" width="2" height="20"/><rect x="42" y="0" width="4" height="20"/><rect x="48" y="0" width="1" height="20"/><rect x="51" y="0" width="3" height="20"/><rect x="56" y="0" width="2" height="20"/><rect x="60" y="0" width="1" height="20"/><rect x="63" y="0" width="4" height="20"/><rect x="69" y="0" width="2" height="20"/><rect x="73" y="0" width="1" height="20"/><rect x="76" y="0" width="3" height="20"/><rect x="81" y="0" width="1" height="20"/><rect x="84" y="0" width="5" height="20"/><rect x="91" y="0" width="2" height="20"/><rect x="95" y="0" width="1" height="20"/><rect x="98" y="0" width="2" height="20"/>
+                                </svg>
+                            </div>
+                            <p class="text-center text-[9px] font-mono text-cream-muted tracking-[0.4em] uppercase font-bold">
+                                RR-17-BE
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="pt-6 md:pt-0 md:px-6 space-y-4">
-                        <span class="text-xs sm:text-sm text-cream-muted uppercase tracking-widest font-mono">Sábado, 18 de outubro</span>
-                        <h3 class="font-display text-2xl sm:text-3xl text-cream font-normal">Melanie Martinez</h3>
-                        <p class="text-cream-muted text-sm sm:text-base font-light leading-relaxed">
-                            Universos conceituais e narrativas profundas em um espetáculo visual e auditivo de estética surrealista.
-                        </p>
-                        <p class="text-xs text-purple-300 font-mono pt-2">Palco Principal • 21:15</p>
+                    <!-- INGRESSO 2: Sábado -->
+                    <div class="group relative flex flex-col bg-violet-dark border-2 border-cream shadow-[8px_8px_0_0_#51307A] hover:shadow-[12px_12px_0_0_#EFE6D2] hover:-translate-y-1 hover:-translate-x-1 transition-all duration-300 h-full">
+                        <div class="p-8 flex flex-col flex-grow">
+                            <div class="flex justify-between items-center mb-6 border-b border-dashed border-cream-subtle pb-4">
+                                <span class="text-[12px] text-cream font-bold tracking-[0.2em] uppercase font-mono">Sábado &bull; 18 Out</span>
+                                <span class="bg-cream text-violet-dark font-bold text-[10px] px-3 py-1 tracking-widest uppercase border border-violet-dark shadow-[2px_2px_0_0_#51307A]">Dia 2</span>
+                            </div>
+                            <h3 class="font-display text-4xl xl:text-5xl text-cream font-bold mb-4 italic leading-none">Melanie Martinez</h3>
+                            <p class="text-cream-muted text-sm font-light leading-relaxed">
+                                Universos conceituais e narrativas profundas em um espetáculo visual e auditivo de estética surrealista.
+                            </p>
+                        </div>
+                        
+                        <div class="relative h-8 flex items-center justify-center w-full">
+                            <div class="absolute left-6 right-6 border-t-2 border-dashed border-cream"></div>
+                            <div class="absolute -left-[2px] w-6 h-6 bg-violet-dark border-2 border-cream border-l-0 rounded-r-full"></div>
+                            <div class="absolute -right-[2px] w-6 h-6 bg-violet-dark border-2 border-cream border-r-0 rounded-l-full"></div>
+                        </div>
+
+                        <div class="bg-purple-accent/10 p-8 flex flex-col gap-6 relative overflow-hidden">
+                            <div class="absolute -right-2 -bottom-2 text-7xl text-purple-accent/20 font-display font-bold select-none pointer-events-none">02</div>
+                            
+                            <div class="flex flex-row justify-between items-start gap-4 relative z-10">
+                                <div>
+                                    <p class="text-[9px] text-cream-muted uppercase tracking-[0.2em] font-mono mb-1">Setor</p>
+                                    <p class="text-sm font-mono text-cream font-bold">Palco Principal</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[9px] text-cream-muted uppercase tracking-[0.2em] font-mono mb-1">Horário</p>
+                                    <p class="text-lg font-display font-bold text-cream">21:15</p>
+                                </div>
+                            </div>
+                            <div class="w-full h-12 text-cream relative z-10 border-t border-cream-subtle pt-4">
+                                <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 20" fill="currentColor">
+                                    <rect x="0" y="0" width="3" height="20"/><rect x="5" y="0" width="1" height="20"/><rect x="8" y="0" width="4" height="20"/><rect x="14" y="0" width="2" height="20"/><rect x="18" y="0" width="1" height="20"/><rect x="21" y="0" width="3" height="20"/><rect x="26" y="0" width="5" height="20"/><rect x="33" y="0" width="1" height="20"/><rect x="36" y="0" width="2" height="20"/><rect x="40" y="0" width="3" height="20"/><rect x="45" y="0" width="1" height="20"/><rect x="48" y="0" width="4" height="20"/><rect x="54" y="0" width="2" height="20"/><rect x="58" y="0" width="1" height="20"/><rect x="61" y="0" width="3" height="20"/><rect x="66" y="0" width="5" height="20"/><rect x="73" y="0" width="1" height="20"/><rect x="76" y="0" width="2" height="20"/><rect x="80" y="0" width="4" height="20"/><rect x="86" y="0" width="1" height="20"/><rect x="89" y="0" width="3" height="20"/><rect x="94" y="0" width="2" height="20"/><rect x="98" y="0" width="2" height="20"/>
+                                </svg>
+                            </div>
+                            <p class="text-center text-[9px] font-mono text-cream-muted tracking-[0.4em] uppercase font-bold">
+                                RR-18-MM
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="pt-6 md:pt-0 md:px-6 last:pr-0 space-y-4">
-                        <span class="text-xs sm:text-sm text-cream-muted uppercase tracking-widest font-mono">Domingo, 19 de outubro</span>
-                        <h3 class="font-display text-2xl sm:text-3xl text-cream font-normal">Rita Lee</h3>
-                        <p class="text-cream-muted text-sm sm:text-base font-light leading-relaxed">
-                            A eterna rainha do rock e pop alternativo brasileiro encerrando o festival com uma celebração inesquecível de clássicos, irreverência e atitude.
-                        </p>
-                        <p class="text-xs text-purple-300 font-mono pt-2">Palco Principal • 22:30</p>
+                    <!-- INGRESSO 3: Domingo -->
+                    <div class="group relative flex flex-col bg-violet-dark border-2 border-cream shadow-[8px_8px_0_0_#51307A] hover:shadow-[12px_12px_0_0_#EFE6D2] hover:-translate-y-1 hover:-translate-x-1 transition-all duration-300 h-full">
+                        <div class="p-8 flex flex-col flex-grow">
+                            <div class="flex justify-between items-center mb-6 border-b border-dashed border-cream-subtle pb-4">
+                                <span class="text-[12px] text-cream font-bold tracking-[0.2em] uppercase font-mono">Domingo &bull; 19 Out</span>
+                                <span class="bg-cream text-violet-dark font-bold text-[10px] px-3 py-1 tracking-widest uppercase border border-violet-dark shadow-[2px_2px_0_0_#51307A]">Dia 3</span>
+                            </div>
+                            <h3 class="font-display text-4xl xl:text-5xl text-cream font-bold mb-4 italic leading-none">Rita Lee</h3>
+                            <p class="text-cream-muted text-sm font-light leading-relaxed">
+                                A eterna rainha do rock e pop alternativo brasileiro encerrando o festival com uma celebração inesquecível de clássicos e atitude.
+                            </p>
+                        </div>
+                        
+                        <div class="relative h-8 flex items-center justify-center w-full">
+                            <div class="absolute left-6 right-6 border-t-2 border-dashed border-cream"></div>
+                            <div class="absolute -left-[2px] w-6 h-6 bg-violet-dark border-2 border-cream border-l-0 rounded-r-full"></div>
+                            <div class="absolute -right-[2px] w-6 h-6 bg-violet-dark border-2 border-cream border-r-0 rounded-l-full"></div>
+                        </div>
+
+                        <div class="bg-purple-accent/10 p-8 flex flex-col gap-6 relative overflow-hidden">
+                            <div class="absolute -right-2 -bottom-2 text-7xl text-purple-accent/20 font-display font-bold select-none pointer-events-none">03</div>
+                            
+                            <div class="flex flex-row justify-between items-start gap-4 relative z-10">
+                                <div>
+                                    <p class="text-[9px] text-cream-muted uppercase tracking-[0.2em] font-mono mb-1">Setor</p>
+                                    <p class="text-sm font-mono text-cream font-bold">Palco Principal</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[9px] text-cream-muted uppercase tracking-[0.2em] font-mono mb-1">Horário</p>
+                                    <p class="text-lg font-display font-bold text-cream">22:30</p>
+                                </div>
+                            </div>
+                            <div class="w-full h-12 text-cream relative z-10 border-t border-cream-subtle pt-4">
+                                <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 20" fill="currentColor">
+                                    <rect x="0" y="0" width="1" height="20"/><rect x="3" y="0" width="5" height="20"/><rect x="10" y="0" width="1" height="20"/><rect x="13" y="0" width="3" height="20"/><rect x="18" y="0" width="2" height="20"/><rect x="22" y="0" width="1" height="20"/><rect x="25" y="0" width="4" height="20"/><rect x="31" y="0" width="1" height="20"/><rect x="34" y="0" width="2" height="20"/><rect x="38" y="0" width="4" height="20"/><rect x="44" y="0" width="1" height="20"/><rect x="47" y="0" width="3" height="20"/><rect x="52" y="0" width="2" height="20"/><rect x="56" y="0" width="1" height="20"/><rect x="59" y="0" width="5" height="20"/><rect x="66" y="0" width="2" height="20"/><rect x="70" y="0" width="1" height="20"/><rect x="73" y="0" width="3" height="20"/><rect x="78" y="0" width="1" height="20"/><rect x="81" y="0" width="4" height="20"/><rect x="87" y="0" width="2" height="20"/><rect x="91" y="0" width="1" height="20"/><rect x="94" y="0" width="4" height="20"/><rect x="99" y="0" width="1" height="20"/>
+                                </svg>
+                            </div>
+                            <p class="text-center text-[9px] font-mono text-cream-muted tracking-[0.4em] uppercase font-bold">
+                                RR-19-RL
+                            </p>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Seção: O Espaço -->
-        <section class="border-t border-cream-subtle bg-violet-dark py-20">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                    <div class="lg:col-span-4">
-                        <h2 class="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-cream tracking-tight">O espaço</h2>
-                    </div>
-                    <div class="lg:col-span-8 space-y-6 text-cream-muted text-base sm:text-lg font-light leading-relaxed">
-                        <p>
-                            O <strong class="font-medium text-cream">Espaço Unimed</strong> foi selecionado como cenário do Ritmo Roxo por sua acústica de nível internacional e estrutura modular imersiva. Situado no coração de São Paulo na Barra Funda, o ambiente ganha cenografia exclusiva nas três noites de festival.
-                        </p>
-                        <p>
-                            O Salão Principal recebe os grandes shows com tecnologia de iluminação dinâmica, enquanto o Lounge Violeta oferece experiências sensoriais, ativações visuais e gastronomia selecionada. Portões abrem pontualmente às 16h em todos os dias.
-                        </p>
+        <!-- Seção: O Espaço (Com moldura decorativa) -->
+        <section class="border-t-2 border-cream-subtle py-24 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                <div class="border-2 border-cream p-8 md:p-12 lg:p-16 bg-violet-dark shadow-[12px_12px_0_0_#51307A] relative">
+                    
+                    <!-- Elementos da moldura -->
+                    <div class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-cream"></div>
+                    <div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-cream"></div>
+                    <div class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-cream"></div>
+                    <div class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-cream"></div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-4">
+                            <span class="inline-block bg-cream text-violet-dark text-[10px] px-2 py-1 font-bold font-mono tracking-widest uppercase mb-4">Localização</span>
+                            <h2 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-cream tracking-tight uppercase leading-none">Espaço<br><span class="italic text-purple-accent text-outline">Unimed</span></h2>
+                        </div>
+                        <div class="lg:col-span-8 space-y-6 text-cream-muted text-base sm:text-lg font-light leading-relaxed border-l-0 lg:border-l-2 lg:border-cream-subtle lg:pl-10">
+                            <p>
+                                O <strong class="font-bold text-cream">Espaço Unimed</strong> foi selecionado como cenário do Ritmo Roxo por sua acústica de nível internacional e estrutura modular imersiva. Situado no coração de São Paulo na Barra Funda, o ambiente ganha cenografia exclusiva nas três noites de festival.
+                            </p>
+                            <p>
+                                O Salão Principal recebe os grandes shows com tecnologia de iluminação dinâmica, enquanto o Lounge Violeta oferece experiências sensoriais, ativações visuais e gastronomia selecionada. Portões abrem pontualmente às 16h em todos os dias.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-cream-subtle bg-violet-dark py-12 mt-auto">
+    <!-- Footer -->
+    <footer class="border-t-2 border-cream-subtle bg-violet-dark py-12 mt-auto relative z-10">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-cream-muted">
-            <div><span class="font-display italic text-lg text-cream">Ritmo Roxo</span> — Festival de Pop Alternativo 2026</div>
-            <p class="text-xs">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-accent">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="currentColor"/>
+                </svg>
+                <span class="font-display italic text-lg text-cream font-bold">Ritmo Roxo</span> — Festival de Pop Alternativo 2026
+            </div>
+            <p class="text-xs font-mono">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -227,7 +452,7 @@
                 audio.pause();
                 vinyl.classList.add('vinyl-paused');
                 tonearm.classList.remove('tonearm-active');
-                btnText.textContent = 'Ouvir Experiência Sonora';
+                btnText.textContent = 'Tocar Experiência';
                 iconContainer.innerHTML = '<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
                 isPlaying = false;
             }

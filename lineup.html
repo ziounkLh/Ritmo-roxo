@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,100 +29,122 @@
             }
         }
     </script>
+    <style>
+        .bg-dots {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23EFE6D2' fill-opacity='0.1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(239, 230, 210, 0.15);
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-violet-dark text-cream min-h-screen flex flex-col">
+<body class="bg-violet-dark text-cream min-h-screen flex flex-col selection:bg-purple-accent selection:text-cream relative bg-dots">
 
-    <header class="w-full border-b border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
+    <!-- Decoração geométrica fixa -->
+    <div class="fixed top-24 left-6 text-cream-subtle font-mono text-xl pointer-events-none z-0 hidden lg:block">+</div>
+    <div class="fixed bottom-12 right-6 text-cream-subtle font-mono text-xl pointer-events-none z-0 hidden lg:block">+</div>
+
+    <header class="w-full border-b-2 border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent">Ritmo Roxo</a>
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Início</a>
+            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent transition-colors flex items-center gap-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-accent">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="currentColor"/>
+                </svg>
+                Ritmo Roxo
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide uppercase font-display">
+                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Início</a>
                 <a href="lineup.html" class="text-cream border-b-2 border-cream pb-1 font-semibold">Line-up</a>
-                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Ingressos</a>
-                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Informações</a>
-                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Dúvidas e contato</a>
+                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Ingressos</a>
+                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Informações</a>
+                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Dúvidas e contato</a>
             </nav>
-            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2">
+            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2 focus:outline-none border border-cream-subtle rounded-md">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b border-cream-subtle px-6 py-6 space-y-4">
-            <a href="index.html" class="block text-lg text-cream-muted py-1 font-display">Início</a>
-            <a href="lineup.html" class="block text-lg text-cream py-1 font-display">Line-up</a>
-            <a href="ingressos.html" class="block text-lg text-cream-muted py-1 font-display">Ingressos</a>
-            <a href="informacoes.html" class="block text-lg text-cream-muted py-1 font-display">Informações</a>
-            <a href="faq.html" class="block text-lg text-cream-muted py-1 font-display">Dúvidas e contato</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b-2 border-cream-subtle px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Início</a>
+            <a href="lineup.html" class="block text-lg text-cream py-1 font-display uppercase tracking-wider">Line-up</a>
+            <a href="ingressos.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Ingressos</a>
+            <a href="informacoes.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Informações</a>
+            <a href="faq.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Dúvidas e contato</a>
         </div>
     </header>
 
-    <main class="flex-grow">
-        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-            <div class="border-b border-cream-subtle pb-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <div>
-                    <span class="text-xs text-purple-300 font-mono uppercase tracking-widest">Programação Completa</span>
-                    <h1 class="font-display font-light text-4xl sm:text-6xl text-cream mt-2">Line-up 2026</h1>
+    <main class="flex-grow relative z-10">
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 relative">
+            <div class="border-b border-cream-subtle/50 pb-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 relative">
+                <div class="relative z-10">
+                    <div class="inline-block border border-cream-subtle px-4 py-1.5 rounded-full text-xs font-mono tracking-[0.2em] uppercase text-cream mb-3">
+                        <span class="text-purple-accent mr-2">●</span> Programação Completa
+                    </div>
+                    <h1 class="font-display font-light text-5xl sm:text-6xl lg:text-7xl text-cream tracking-tight">Line-up <span class="italic font-bold">2026</span></h1>
                 </div>
                 
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="filterLineup('all')" id="filter-all" class="filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream bg-cream text-violet-dark">Todos</button>
-                    <button onclick="filterLineup('dia17')" id="filter-dia17" class="filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream">17 Out</button>
-                    <button onclick="filterLineup('dia18')" id="filter-dia18" class="filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream">18 Out</button>
-                    <button onclick="filterLineup('dia19')" id="filter-dia19" class="filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream">19 Out</button>
+                <div class="flex flex-wrap gap-3 z-10">
+                    <button onclick="filterLineup('all')" id="filter-all" class="filter-btn px-5 py-2.5 text-xs font-mono uppercase border-2 border-cream bg-cream text-violet-dark font-bold shadow-[4px_4px_0_0_#51307A] transition-all">Todos</button>
+                    <button onclick="filterLineup('dia17')" id="filter-dia17" class="filter-btn px-5 py-2.5 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream transition-all">17 Out</button>
+                    <button onclick="filterLineup('dia18')" id="filter-dia18" class="filter-btn px-5 py-2.5 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream transition-all">18 Out</button>
+                    <button onclick="filterLineup('dia19')" id="filter-dia19" class="filter-btn px-5 py-2.5 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream transition-all">19 Out</button>
                 </div>
             </div>
 
             <div class="space-y-16">
                 <!-- DIA 17 -->
                 <div id="group-dia17" class="lineup-group space-y-8">
-                    <div class="flex items-center space-x-4">
-                        <h2 class="font-display text-2xl text-cream">Sexta-feira, 17 de Outubro</h2>
+                    <div class="flex items-center space-x-4 pb-2 border-b border-cream-subtle/40">
+                        <span class="text-purple-accent font-bold">◆</span>
+                        <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-tight text-cream">Sexta-feira, 17 de Outubro</h2>
                         <div class="flex-grow h-px bg-cream-subtle"></div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="artist-card bg-black/30 border border-purple-accent/40 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/BillieEilish.png" alt="Billie Eilish" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/40 border-2 border-purple-accent/80 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[6px_6px_0_0_#51307A] hover:shadow-[8px_8px_0_0_#EFE6D2] hover:-translate-y-1 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-purple-accent text-cream text-[10px] font-mono px-2 py-0.5 uppercase tracking-wider">Destaque</div>
+                            <img src="img/BillieEilish.png" alt="Billie Eilish" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-2 border-cream/30 group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">23:00 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Billie Eilish</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">23:00 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Billie Eilish</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Pioneira do pop alternativo obscuro, apresentando repertório exclusivo de seus maiores sucessos.</p>
                             </div>
                         </div>
 
-                        
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/ChappellRoan.png" alt="Chappell Roan" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/ChappellRoan.png" alt="Chappell Roan" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">21:00 — Palco Violeta</span>
-                                <h3 class="font-display text-2xl text-cream">Chappell Roan</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">21:00 — Palco Violeta</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Chappell Roan</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Glamour teatral, synth-pop contagiante e vocais operísticos potentes em uma celebração exuberante do pop contemporâneo.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/Clairo.png" alt="Clairo" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/Clairo.png" alt="Clairo" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">19:30 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Clairo</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">19:30 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Clairo</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Melodias intimistas e Bedroom Pop sofisticado revestido em arranjos analógicos envolventes.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/AnaCarolina.png" alt="Ana Carolina" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/AnaCarolina.png" alt="Ana Carolina" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">18:00 — Palco Violeta</span>
-                                <h3 class="font-display text-2xl text-cream">Ana Carolina</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">18:00 — Palco Violeta</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Ana Carolina</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Voz marcante da MPB e do pop rock, entregando vocais graves potentes e grandes sucessos da música brasileira.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/Liniker.png" alt="Liniker" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/Liniker.png" alt="Liniker" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">16:45 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Liniker</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">16:45 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Liniker</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">A voz aveludada e potente do soul-pop brasileiro inaugurando a vibração do festival.</p>
                             </div>
                         </div>
@@ -131,53 +153,55 @@
 
                 <!-- DIA 18 -->
                 <div id="group-dia18" class="lineup-group space-y-8">
-                    <div class="flex items-center space-x-4">
-                        <h2 class="font-display text-2xl text-cream">Sábado, 18 de Outubro</h2>
+                    <div class="flex items-center space-x-4 pb-2 border-b border-cream-subtle/40">
+                        <span class="text-purple-accent font-bold">◆</span>
+                        <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-tight text-cream">Sábado, 18 de Outubro</h2>
                         <div class="flex-grow h-px bg-cream-subtle"></div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="artist-card bg-black/30 border border-purple-accent/40 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/MelanieMartinez.png" alt="Melanie Martinez" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/40 border-2 border-purple-accent/80 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[6px_6px_0_0_#51307A] hover:shadow-[8px_8px_0_0_#EFE6D2] hover:-translate-y-1 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-purple-accent text-cream text-[10px] font-mono px-2 py-0.5 uppercase tracking-wider">Destaque</div>
+                            <img src="img/MelanieMartinez.png" alt="Melanie Martinez" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-2 border-cream/30 group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">21:15 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Melanie Martinez</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">21:15 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Melanie Martinez</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Espetáculo teatral imersivo repleto de cenografia fantástica e figurinos de altíssimo conceito.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-purple-accent/40 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/LanaDelRey.png" alt="Lana Del Rey" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/LanaDelRey.png" alt="Lana Del Rey" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">23:30 — Palco Roxo</span>
-                                <h3 class="font-display text-2xl text-cream">Lana Del Rey</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">23:30 — Palco Violeta</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Lana Del Rey</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Estética cinematográfica noir, pop melancólico e uma atmosfera hipnotizante na apresentação noturna.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/PhoebeBridgers.png" alt="Phoebe Bridgers" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/PhoebeBridgers.png" alt="Phoebe Bridgers" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">19:30 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Phoebe Bridgers</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">19:30 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Phoebe Bridgers</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Indie e pop melancólico com composições poéticas afiadas e arranjos orquestrais solenes.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/MarinaSena.png" alt="Marina Sena" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/MarinaSena.png" alt="Marina Sena" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">18:00 — Palco Violeta</span>
-                                <h3 class="font-display text-2xl text-cream">Marina Sena</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">18:00 — Palco Violeta</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Marina Sena</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Pop tropical, batidas contemporâneas e magnetismo de palco incomparável no cenário atual.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/AuroraAksnes.png" alt="Aurora Aksnes" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/AuroraAksnes.png" alt="Aurora Aksnes" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">16:30 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Aurora Aksnes</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">16:30 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Aurora Aksnes</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Pop etéreo, vocais cristalinos e uma presença mística contagiante nos palcos.</p>
                             </div>
                         </div>
@@ -186,53 +210,55 @@
 
                 <!-- DIA 19 -->
                 <div id="group-dia19" class="lineup-group space-y-8">
-                    <div class="flex items-center space-x-4">
-                        <h2 class="font-display text-2xl text-cream">Domingo, 19 de Outubro</h2>
+                    <div class="flex items-center space-x-4 pb-2 border-b border-cream-subtle/40">
+                        <span class="text-purple-accent font-bold">◆</span>
+                        <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-tight text-cream">Domingo, 19 de Outubro</h2>
                         <div class="flex-grow h-px bg-cream-subtle"></div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="artist-card bg-black/30 border border-purple-accent/40 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/RitaLee.png" alt="Rita Lee" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/40 border-2 border-purple-accent/80 p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[6px_6px_0_0_#51307A] hover:shadow-[8px_8px_0_0_#EFE6D2] hover:-translate-y-1 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-purple-accent text-cream text-[10px] font-mono px-2 py-0.5 uppercase tracking-wider">Destaque</div>
+                            <img src="img/RitaLee.png" alt="Rita Lee" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-2 border-cream/30 group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">22:30 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Rita Lee</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">22:30 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Rita Lee</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">A eterna rainha do rock brasileiro em um show inesquecível no grande encerramento do festival.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/SabrinaCarpenter.png" alt="Sabrina Carpenter" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/SabrinaCarpenter.png" alt="Sabrina Carpenter" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">20:30 — Palco Violeta</span>
-                                <h3 class="font-display text-2xl text-cream">Sabrina Carpenter</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">20:30 — Palco Violeta</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Sabrina Carpenter</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Hits pop contagiantes, carisma radiante e uma performance vibrante repleta de atitude.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/Mitski.png" alt="Mitski" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/Mitski.png" alt="Mitski" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">19:00 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Mitski</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">19:00 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Mitski</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Expressividade teatral e lírica visceral em arranjos indie-pop intensos e cativantes.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/GirlInRed.png" alt="Girl in Red" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/GirlInRed.png" alt="Girl in Red" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">17:45 — Palco Violeta</span>
-                                <h3 class="font-display text-2xl text-cream">Girl in Red</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">17:45 — Palco Violeta</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Girl in Red</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Guitarras enérgicas e hinos do pop alternativo jovem celebrados com vibração total.</p>
                             </div>
                         </div>
 
-                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all group">
-                            <img src="img/MarinaAndTheDiamonds.png" alt="Marina and the Diamonds" class="artist-avatar shrink-0">
+                        <div class="artist-card bg-black/30 border border-cream-subtle p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 hover:border-cream transition-all duration-300 group shadow-[4px_4px_0_0_rgba(81,48,122,0.4)] hover:shadow-[6px_6px_0_0_#51307A] hover:-translate-y-1">
+                            <img src="img/MarinaAndTheDiamonds.png" alt="Marina and the Diamonds" class="artist-avatar w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border border-cream-subtle group-hover:border-cream transition-colors shrink-0 shadow-md">
                             <div class="space-y-2 text-center sm:text-left">
-                                <span class="text-xs text-purple-300 font-mono block">16:30 — Palco Principal</span>
-                                <h3 class="font-display text-2xl text-cream">Marina and the Diamonds</h3>
+                                <span class="text-xs text-purple-300 font-mono tracking-wider uppercase block">16:30 — Palco Principal</span>
+                                <h3 class="font-display text-2xl font-bold text-cream">Marina and the Diamonds</h3>
                                 <p class="text-xs text-cream-muted font-light leading-relaxed">Pop teatral, letras afiadas e hinos alternativos cheios de estilo e personalidade.</p>
                             </div>
                         </div>
@@ -243,10 +269,15 @@
         </section>
     </main>
 
-    <footer class="border-t border-cream-subtle bg-violet-dark py-12 mt-auto">
+    <footer class="border-t-2 border-cream-subtle bg-violet-dark py-12 mt-auto relative z-10">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-cream-muted">
-            <div><span class="font-display italic text-lg text-cream">Ritmo Roxo</span> — Festival de Pop Alternativo 2026</div>
-            <p class="text-xs">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-accent">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L12 22L9 15L2 12L9 9L12 2Z" fill="currentColor"/>
+                </svg>
+                <span class="font-display italic text-lg text-cream font-bold">Ritmo Roxo</span> — Festival de Pop Alternativo 2026
+            </div>
+            <p class="text-xs font-mono">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -262,10 +293,13 @@
             const buttons = document.querySelectorAll('.filter-btn');
 
             buttons.forEach(btn => {
-                btn.className = 'filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream';
+                btn.className = 'filter-btn px-5 py-2.5 text-xs font-mono uppercase border border-cream-subtle text-cream hover:border-cream transition-all';
             });
 
-            document.getElementById('filter-' + day).className = 'filter-btn px-4 py-2 text-xs font-mono uppercase border border-cream bg-cream text-violet-dark';
+            const activeBtn = document.getElementById('filter-' + day);
+            if (activeBtn) {
+                activeBtn.className = 'filter-btn px-5 py-2.5 text-xs font-mono uppercase border-2 border-cream bg-cream text-violet-dark font-bold shadow-[4px_4px_0_0_#51307A] transition-all';
+            }
 
             if (day === 'all') {
                 group17.classList.remove('hidden');

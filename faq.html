@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,140 +29,201 @@
             }
         }
     </script>
+    <style>
+        /* Textura de fundo com SVG repetido */
+        .bg-dots {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23EFE6D2' fill-opacity='0.1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        /* Texto vazado para decoração */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(239, 230, 210, 0.2);
+        }
+
+        /* Transição suave do acordeão FAQ */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .faq-answer.open {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 0.75rem;
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-violet-dark text-cream min-h-screen flex flex-col">
+<body class="bg-violet-dark text-cream min-h-screen flex flex-col selection:bg-purple-accent selection:text-cream relative bg-dots">
 
-    <header class="w-full border-b border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
+    <!-- Decoração geométrica fixa -->
+    <div class="fixed top-24 left-6 text-cream-subtle font-mono text-xl pointer-events-none z-0 hidden lg:block">+</div>
+    <div class="fixed bottom-12 right-6 text-cream-subtle font-mono text-xl pointer-events-none z-0 hidden lg:block">+</div>
+
+    <header class="w-full border-b-2 border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent">Ritmo Roxo</a>
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Início</a>
-                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Line-up</a>
-                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Ingressos</a>
-                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Informações</a>
+            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent transition-colors flex items-center gap-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-accent">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="currentColor"/>
+                </svg>
+                Ritmo Roxo
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide uppercase font-display">
+                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Início</a>
+                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Line-up</a>
+                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Ingressos</a>
+                <a href="informacoes.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Informações</a>
                 <a href="faq.html" class="text-cream border-b-2 border-cream pb-1 font-semibold">Dúvidas e contato</a>
             </nav>
-            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2 focus:outline-none border border-cream-subtle rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b border-cream-subtle px-6 py-6 space-y-4">
-            <a href="index.html" class="block text-lg text-cream-muted py-1 font-display">Início</a>
-            <a href="lineup.html" class="block text-lg text-cream-muted py-1 font-display">Line-up</a>
-            <a href="ingressos.html" class="block text-lg text-cream-muted py-1 font-display">Ingressos</a>
-            <a href="informacoes.html" class="block text-lg text-cream-muted py-1 font-display">Informações</a>
-            <a href="faq.html" class="block text-lg text-cream py-1 font-display">Dúvidas e contato</a>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b-2 border-cream-subtle px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Início</a>
+            <a href="lineup.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Line-up</a>
+            <a href="ingressos.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Ingressos</a>
+            <a href="informacoes.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Informações</a>
+            <a href="faq.html" class="block text-lg text-cream py-1 font-display uppercase tracking-wider">Dúvidas e contato</a>
         </div>
     </header>
 
-    <main class="flex-grow">
-        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 space-y-16">
-            <div class="border-b border-cream-subtle pb-8">
-                <span class="text-xs text-purple-300 font-mono uppercase tracking-widest">Atendimento</span>
-                <h1 class="font-display font-light text-4xl sm:text-6xl text-cream mt-2">Perguntas Frequentes e Contato</h1>
+    <main class="flex-grow relative z-10">
+        <!-- Elemento decorativo de fundo -->
+        <svg class="absolute top-10 -right-20 w-[400px] h-[400px] text-cream opacity-5 pointer-events-none" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/>
+        </svg>
+
+        <section class="max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-16 space-y-12">
+            
+            <!-- Cabeçalho da Seção -->
+            <div class="border-b-2 border-cream-subtle pb-8">
+                <div class="inline-block border border-cream-subtle px-4 py-1.5 rounded-full text-xs font-mono tracking-[0.2em] uppercase text-cream mb-4">
+                    <span class="text-purple-accent mr-2">●</span> Atendimento
+                </div>
+                <h1 class="font-display font-light text-4xl sm:text-6xl text-cream tracking-tight">
+                    Perguntas Frequentes e Contato
+                </h1>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
                 <!-- Acordeão FAQ -->
                 <div class="lg:col-span-7 space-y-4">
-                    <h2 class="font-display text-2xl text-cream mb-6">Perguntas Frequentes</h2>
+                    <h2 class="font-display text-2xl lg:text-3xl font-bold text-cream mb-6 tracking-tight flex items-center gap-3">
+                        <span class="text-purple-accent text-lg">✦</span>
+                        Perguntas Frequentes
+                    </h2>
 
-                    <div class="border border-cream-subtle bg-black/30 p-5 cursor-pointer" onclick="toggleFaq('faq-1')">
-                        <div class="flex justify-between items-center font-display text-lg text-cream">
+                    <!-- FAQ 1 -->
+                    <div class="border-2 border-cream bg-violet-dark p-6 cursor-pointer shadow-[4px_4px_0_0_#51307A] hover:shadow-[6px_6px_0_0_#EFE6D2] hover:-translate-y-0.5 transition-all duration-200" onclick="toggleFaq('faq-1')">
+                        <div class="flex justify-between items-center font-display text-lg text-cream font-medium">
                             <span>Qual a classificação etária do evento?</span>
-                            <span id="icon-faq-1" class="text-purple-300 font-mono">+</span>
+                            <span id="icon-faq-1" class="text-purple-accent font-mono text-2xl font-bold ml-4 select-none">+</span>
                         </div>
-                        <div id="faq-1" class="faq-answer mt-3 text-sm text-cream-muted leading-relaxed">
+                        <div id="faq-1" class="faq-answer text-sm text-cream-muted leading-relaxed font-light border-t border-cream-subtle pt-3">
                             A classificação etária é de 16 anos. Menores entre 14 e 15 anos podem entrar acompanhados dos pais ou responsável legal com autorização registrada.
                         </div>
                     </div>
 
-                    <div class="border border-cream-subtle bg-black/30 p-5 cursor-pointer" onclick="toggleFaq('faq-2')">
-                        <div class="flex justify-between items-center font-display text-lg text-cream">
+                    <!-- FAQ 2 -->
+                    <div class="border-2 border-cream bg-violet-dark p-6 cursor-pointer shadow-[4px_4px_0_0_#51307A] hover:shadow-[6px_6px_0_0_#EFE6D2] hover:-translate-y-0.5 transition-all duration-200" onclick="toggleFaq('faq-2')">
+                        <div class="flex justify-between items-center font-display text-lg text-cream font-medium">
                             <span>Como funciona o Passaporte para os 3 dias?</span>
-                            <span id="icon-faq-2" class="text-purple-300 font-mono">+</span>
+                            <span id="icon-faq-2" class="text-purple-accent font-mono text-2xl font-bold ml-4 select-none">+</span>
                         </div>
-                        <div id="faq-2" class="faq-answer mt-3 text-sm text-cream-muted leading-relaxed">
+                        <div id="faq-2" class="faq-answer text-sm text-cream-muted leading-relaxed font-light border-t border-cream-subtle pt-3">
                             O Passaporte garante acesso individual aos três dias consecutivos do festival (17, 18 e 19/10) com desconto exclusivo no valor total das diárias.
                         </div>
                     </div>
 
-                    <div class="border border-cream-subtle bg-black/30 p-5 cursor-pointer" onclick="toggleFaq('faq-3')">
-                        <div class="flex justify-between items-center font-display text-lg text-cream">
+                    <!-- FAQ 3 -->
+                    <div class="border-2 border-cream bg-violet-dark p-6 cursor-pointer shadow-[4px_4px_0_0_#51307A] hover:shadow-[6px_6px_0_0_#EFE6D2] hover:-translate-y-0.5 transition-all duration-200" onclick="toggleFaq('faq-3')">
+                        <div class="flex justify-between items-center font-display text-lg text-cream font-medium">
                             <span>Como funciona a Meia Social?</span>
-                            <span id="icon-faq-3" class="text-purple-300 font-mono">+</span>
+                            <span id="icon-faq-3" class="text-purple-accent font-mono text-2xl font-bold ml-4 select-none">+</span>
                         </div>
-                        <div id="faq-3" class="faq-answer mt-3 text-sm text-cream-muted leading-relaxed">
+                        <div id="faq-3" class="faq-answer text-sm text-cream-muted leading-relaxed font-light border-t border-cream-subtle pt-3">
                             Qualquer pessoa pode adquirir a Meia Social mediante a entrega de 1kg de alimento não perecível na portaria em cada dia do evento.
                         </div>
                     </div>
 
-                    <div class="border border-cream-subtle bg-black/30 p-5 cursor-pointer" onclick="toggleFaq('faq-4')">
-                        <div class="flex justify-between items-center font-display text-lg text-cream">
+                    <!-- FAQ 4 -->
+                    <div class="border-2 border-cream bg-violet-dark p-6 cursor-pointer shadow-[4px_4px_0_0_#51307A] hover:shadow-[6px_6px_0_0_#EFE6D2] hover:-translate-y-0.5 transition-all duration-200" onclick="toggleFaq('faq-4')">
+                        <div class="flex justify-between items-center font-display text-lg text-cream font-medium">
                             <span>O local é totalmente coberto?</span>
-                            <span id="icon-faq-4" class="text-purple-300 font-mono">+</span>
+                            <span id="icon-faq-4" class="text-purple-accent font-mono text-2xl font-bold ml-4 select-none">+</span>
                         </div>
-                        <div id="faq-4" class="faq-answer mt-3 text-sm text-cream-muted leading-relaxed">
+                        <div id="faq-4" class="faq-answer text-sm text-cream-muted leading-relaxed font-light border-t border-cream-subtle pt-3">
                             Sim! O Espaço Unimed conta com estrutura 100% coberta e climatizada, garantindo conforto total independentemente do clima.
                         </div>
                     </div>
 
-                    <!-- Pergunta 5 Adicionada -->
-                    <div class="border border-cream-subtle bg-black/30 p-5 cursor-pointer" onclick="toggleFaq('faq-5')">
-                        <div class="flex justify-between items-center font-display text-lg text-cream">
+                    <!-- FAQ 5 -->
+                    <div class="border-2 border-cream bg-violet-dark p-6 cursor-pointer shadow-[4px_4px_0_0_#51307A] hover:shadow-[6px_6px_0_0_#EFE6D2] hover:-translate-y-0.5 transition-all duration-200" onclick="toggleFaq('faq-5')">
+                        <div class="flex justify-between items-center font-display text-lg text-cream font-medium">
                             <span>Posso transferir ou reembolsar meu ingresso?</span>
-                            <span id="icon-faq-5" class="text-purple-300 font-mono">+</span>
+                            <span id="icon-faq-5" class="text-purple-accent font-mono text-2xl font-bold ml-4 select-none">+</span>
                         </div>
-                        <div id="faq-5" class="faq-answer mt-3 text-sm text-cream-muted leading-relaxed">
+                        <div id="faq-5" class="faq-answer text-sm text-cream-muted leading-relaxed font-light border-t border-cream-subtle pt-3">
                             A transferência de titularidade pode ser feita diretamente pelo aplicativo oficial de ingressos até 48 horas antes do evento. O cancelamento com reembolso integral pode ser solicitado em até 7 dias após a compra.
                         </div>
                     </div>
 
-                    <!-- Pergunta 6 Adicionada -->
-                    <div class="border border-cream-subtle bg-black/30 p-5 cursor-pointer" onclick="toggleFaq('faq-6')">
-                        <div class="flex justify-between items-center font-display text-lg text-cream">
+                    <!-- FAQ 6 -->
+                    <div class="border-2 border-cream bg-violet-dark p-6 cursor-pointer shadow-[4px_4px_0_0_#51307A] hover:shadow-[6px_6px_0_0_#EFE6D2] hover:-translate-y-0.5 transition-all duration-200" onclick="toggleFaq('faq-6')">
+                        <div class="flex justify-between items-center font-display text-lg text-cream font-medium">
                             <span>Haverá serviço de guarda-volumes (lockers) no local?</span>
-                            <span id="icon-faq-6" class="text-purple-300 font-mono">+</span>
+                            <span id="icon-faq-6" class="text-purple-accent font-mono text-2xl font-bold ml-4 select-none">+</span>
                         </div>
-                        <div id="faq-6" class="faq-answer mt-3 text-sm text-cream-muted leading-relaxed">
+                        <div id="faq-6" class="faq-answer text-sm text-cream-muted leading-relaxed font-light border-t border-cream-subtle pt-3">
                             Sim! Teremos serviço de guarda-volumes pago na entrada do local durante todos os dias do festival para que você guarde seus pertences com segurança.
                         </div>
                     </div>
                 </div>
 
                 <!-- Formulário de Contato -->
-                <div class="lg:col-span-5 bg-black/40 border border-cream-subtle p-8 space-y-6">
-                    <h2 class="font-display text-2xl text-cream border-b border-cream-subtle pb-4">Fale Conosco</h2>
+                <div class="lg:col-span-5 bg-violet-dark border-2 border-cream shadow-[8px_8px_0_0_#51307A] p-8 space-y-6 relative">
+                    <h2 class="font-display font-bold text-2xl text-cream border-b border-cream-subtle pb-4 uppercase tracking-wider">
+                        Fale Conosco
+                    </h2>
                     
-                    <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!');" class="space-y-4 text-sm">
+                    <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!');" class="space-y-5 text-sm">
                         <div>
-                            <label class="block text-xs uppercase text-cream-muted font-mono mb-1">Seu Nome</label>
-                            <input type="text" required placeholder="Digite seu nome completo" class="w-full p-3 rounded-none">
+                            <label class="block text-xs uppercase text-cream-muted font-mono mb-2 tracking-widest">Seu Nome</label>
+                            <input type="text" required placeholder="Digite seu nome completo" class="w-full p-3.5 bg-black/40 border border-cream-subtle text-cream placeholder-cream-muted/50 focus:border-cream focus:outline-none focus:ring-1 focus:ring-cream transition-colors text-sm rounded-none">
                         </div>
 
                         <div>
-                            <label class="block text-xs uppercase text-cream-muted font-mono mb-1">Seu E-mail</label>
-                            <input type="email" required placeholder="seuemail@exemplo.com" class="w-full p-3 rounded-none">
+                            <label class="block text-xs uppercase text-cream-muted font-mono mb-2 tracking-widest">Seu E-mail</label>
+                            <input type="email" required placeholder="seuemail@exemplo.com" class="w-full p-3.5 bg-black/40 border border-cream-subtle text-cream placeholder-cream-muted/50 focus:border-cream focus:outline-none focus:ring-1 focus:ring-cream transition-colors text-sm rounded-none">
                         </div>
 
                         <div>
-                            <label class="block text-xs uppercase text-cream-muted font-mono mb-1">Assunto</label>
-                            <select class="w-full p-3 rounded-none">
-                                <option>Dúvidas sobre Ingressos</option>
-                                <option>Acessibilidade PCD</option>
-                                <option>Imprensa e Credenciamento</option>
-                                <option>Outros assuntos</option>
+                            <label class="block text-xs uppercase text-cream-muted font-mono mb-2 tracking-widest">Assunto</label>
+                            <select class="w-full p-3.5 bg-black/40 border border-cream-subtle text-cream focus:border-cream focus:outline-none focus:ring-1 focus:ring-cream transition-colors text-sm rounded-none">
+                                <option class="bg-violet-dark text-cream">Dúvidas sobre Ingressos</option>
+                                <option class="bg-violet-dark text-cream">Acessibilidade PCD</option>
+                                <option class="bg-violet-dark text-cream">Imprensa e Credenciamento</option>
+                                <option class="bg-violet-dark text-cream">Outros assuntos</option>
                             </select>
                         </div>
 
                         <div>
-                            <label class="block text-xs uppercase text-cream-muted font-mono mb-1">Mensagem</label>
-                            <textarea rows="4" required placeholder="Escreva sua dúvida ou mensagem..." class="w-full p-3 rounded-none"></textarea>
+                            <label class="block text-xs uppercase text-cream-muted font-mono mb-2 tracking-widest">Mensagem</label>
+                            <textarea rows="4" required placeholder="Escreva sua dúvida ou mensagem..." class="w-full p-3.5 bg-black/40 border border-cream-subtle text-cream placeholder-cream-muted/50 focus:border-cream focus:outline-none focus:ring-1 focus:ring-cream transition-colors text-sm rounded-none resize-none"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full bg-cream text-violet-dark py-3.5 font-display font-medium hover:bg-white transition-all">
+                        <button type="submit" class="w-full bg-cream text-violet-dark py-4 font-display font-bold uppercase tracking-widest hover:bg-white transition-all border border-violet-dark shadow-[4px_4px_0_0_#51307A] active:translate-y-0 active:shadow-none">
                             Enviar Mensagem
                         </button>
                     </form>
@@ -172,10 +233,15 @@
         </section>
     </main>
 
-    <footer class="border-t border-cream-subtle bg-violet-dark py-12 mt-auto">
+    <footer class="border-t-2 border-cream-subtle bg-violet-dark py-12 mt-auto relative z-20">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-cream-muted">
-            <div><span class="font-display italic text-lg text-cream">Ritmo Roxo</span> — Festival de Pop Alternativo 2026</div>
-            <p class="text-xs">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-accent">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="currentColor"/>
+                </svg>
+                <span class="font-display italic text-lg text-cream font-bold">Ritmo Roxo</span> — Festival de Pop Alternativo 2026
+            </div>
+            <p class="text-xs font-mono">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
         </div>
     </footer>
 

@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,61 +29,102 @@
             }
         }
     </script>
+    <style>
+        /* Textura de fundo com SVG repetido */
+        .bg-dots {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23EFE6D2' fill-opacity='0.1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        /* Texto vazado para decoração */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(239, 230, 210, 0.2);
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-violet-dark text-cream min-h-screen flex flex-col">
+<body class="bg-violet-dark text-cream min-h-screen flex flex-col selection:bg-purple-accent selection:text-cream relative bg-dots">
 
-    <header class="w-full border-b border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
+    <!-- Decoração geométrica fixa -->
+    <div class="fixed top-24 left-6 text-cream-subtle font-mono text-xl pointer-events-none z-0 hidden lg:block">+</div>
+    <div class="fixed bottom-12 right-6 text-cream-subtle font-mono text-xl pointer-events-none z-0 hidden lg:block">+</div>
+
+    <!-- Header -->
+    <header class="w-full border-b-2 border-cream-subtle sticky top-0 bg-violet-dark/95 backdrop-blur-md z-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent">Ritmo Roxo</a>
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Início</a>
-                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Line-up</a>
-                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Ingressos</a>
+            <a href="index.html" class="font-display italic text-2xl lg:text-3xl text-cream hover:text-purple-accent transition-colors flex items-center gap-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-accent">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="currentColor"/>
+                </svg>
+                Ritmo Roxo
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide uppercase font-display">
+                <a href="index.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Início</a>
+                <a href="lineup.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Line-up</a>
+                <a href="ingressos.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Ingressos</a>
                 <a href="informacoes.html" class="text-cream border-b-2 border-cream pb-1 font-semibold">Informações</a>
-                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent pb-1">Dúvidas e contato</a>
+                <a href="faq.html" class="text-cream-muted hover:text-cream border-b-2 border-transparent hover:border-cream-subtle pb-1 transition-all">Dúvidas e contato</a>
             </nav>
-            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-cream p-2 focus:outline-none border border-cream-subtle rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b border-cream-subtle px-6 py-6 space-y-4">
-            <a href="index.html" class="block text-lg text-cream-muted py-1 font-display">Início</a>
-            <a href="lineup.html" class="block text-lg text-cream-muted py-1 font-display">Line-up</a>
-            <a href="ingressos.html" class="block text-lg text-cream-muted py-1 font-display">Ingressos</a>
-            <a href="informacoes.html" class="block text-lg text-cream py-1 font-display">Informações</a>
-            <a href="faq.html" class="block text-lg text-cream-muted py-1 font-display">Dúvidas e contato</a>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-violet-dark border-b-2 border-cream-subtle px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Início</a>
+            <a href="lineup.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Line-up</a>
+            <a href="ingressos.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Ingressos</a>
+            <a href="informacoes.html" class="block text-lg text-cream py-1 font-display uppercase tracking-wider">Informações</a>
+            <a href="faq.html" class="block text-lg text-cream-muted hover:text-cream py-1 font-display uppercase tracking-wider">Dúvidas e contato</a>
         </div>
     </header>
 
-    <main class="flex-grow">
+    <main class="flex-grow relative z-10">
         <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 space-y-12">
-            <div class="border-b border-cream-subtle pb-8">
-                <span class="text-xs text-purple-300 font-mono uppercase tracking-widest">Guia Prático</span>
-                <h1 class="font-display font-light text-4xl sm:text-6xl text-cream mt-2">Informações do Evento</h1>
+            
+            <!-- Título da Seção Estilizado -->
+            <div class="border-b-2 border-cream-subtle pb-8 relative">
+                <div class="inline-block border border-cream-subtle px-4 py-1.5 rounded-full text-xs font-mono tracking-[0.2em] uppercase text-cream mb-4">
+                    <span class="text-purple-accent mr-2">●</span> Guia Prático
+                </div>
+                <h1 class="font-display font-light text-4xl sm:text-6xl lg:text-7xl text-cream mt-2 tracking-tight">
+                    Informações do Evento
+                </h1>
             </div>
 
-            <!-- Bloco principal: Local e Como Chegar com Texto e Mapa lado a lado -->
-            <div class="bg-black/30 border border-cream-subtle p-8 lg:p-10 space-y-6">
-                <h2 class="font-display text-2xl lg:text-3xl text-cream">Local e Como Chegar</h2>
+            <!-- Bloco principal: Local e Como Chegar -->
+            <div class="bg-violet-dark border-2 border-cream p-8 lg:p-12 shadow-[12px_12px_0_0_#51307A] relative space-y-8">
+
+                <div class="border-b border-cream-subtle pb-4">
+                    <h2 class="font-display text-2xl lg:text-4xl text-cream font-bold tracking-tight uppercase">Local e Como Chegar</h2>
+                </div>
                 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     <!-- Texto descritivo na esquerda -->
-                    <div class="space-y-4">
-                        <p class="text-base text-cream-muted leading-relaxed">
-                            <strong class="text-cream text-lg">Espaço Unimed</strong><br>
-                            Rua Tagipuru, 795 — Barra Funda, São Paulo/SP.
-                        </p>
-                        <p class="text-sm text-cream-muted leading-relaxed">
+                    <div class="space-y-6 text-cream-muted leading-relaxed">
+                        <div class="bg-purple-accent/20 p-5 border-l-4 border-purple-accent">
+                            <p class="text-base text-cream-muted leading-relaxed">
+                                <strong class="text-cream text-xl font-display font-bold block mb-1">Espaço Unimed</strong>
+                                Rua Tagipuru, 795 — Barra Funda, São Paulo/SP.
+                            </p>
+                        </div>
+
+                        <p class="text-sm sm:text-base text-cream-muted leading-relaxed">
                             A apenas 500 metros da Estação de Metrô e Trem <strong class="text-cream">Palmeiras-Barra Funda (Linha 3-Vermelha)</strong>.
                         </p>
-                        <p class="text-sm text-cream-muted leading-relaxed">
+
+                        <p class="text-sm sm:text-base text-cream-muted leading-relaxed">
                             Recomendamos priorizar o transporte público ou serviços de aplicativo para maior comodidade durante o festival.
                         </p>
                     </div>
 
                     <!-- Mapa na direita -->
-                    <div class="w-full h-64 lg:h-72 overflow-hidden rounded border border-cream-subtle/50 shadow-lg">
+                    <div class="w-full h-72 lg:h-80 overflow-hidden border-2 border-cream shadow-[6px_6px_0_0_#51307A]">
                         <iframe 
                             title="Mapa de localização do Espaço Unimed"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.822818556396!2d-46.6698687!3d-23.5298642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce580f8e998e3b%3A0x6b245a4ba4353d7e!2sEspa%C3%A7o%20Unimed!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
@@ -102,40 +143,64 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- Horários -->
-                <div class="bg-black/30 border border-cream-subtle p-8 space-y-4">
-                    <h2 class="font-display text-xl text-cream">Horários dos 3 Dias</h2>
-                    <ul class="text-sm text-cream-muted space-y-2">
-                        <li>• <strong class="text-cream">Sexta (17/10):</strong> Abertura 16:00 | Shows até 01:00</li>
-                        <li>• <strong class="text-cream">Sábado (18/10):</strong> Abertura 16:00 | Shows até 01:00</li>
-                        <li>• <strong class="text-cream">Domingo (19/10):</strong> Abertura 15:30 | Shows até 00:00</li>
-                    </ul>
+                <div class="bg-violet-dark border-2 border-cream p-8 space-y-6 shadow-[8px_8px_0_0_#51307A] hover:shadow-[12px_12px_0_0_#EFE6D2] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4 border-b border-dashed border-cream-subtle pb-3">
+                            <span class="bg-cream text-violet-dark font-bold text-[10px] px-2.5 py-1 tracking-widest uppercase font-mono border border-violet-dark">Horários</span>
+                            <span class="text-xs font-mono text-purple-300">01</span>
+                        </div>
+                        <h2 class="font-display font-bold text-2xl text-cream mb-4">Horários dos 3 Dias</h2>
+                        <ul class="text-sm text-cream-muted space-y-3 font-light">
+                            <li class="border-b border-cream-subtle/30 pb-2">• <strong class="text-cream font-medium">Sexta (17/10):</strong> Abertura 16:00 | Shows até 01:00</li>
+                            <li class="border-b border-cream-subtle/30 pb-2">• <strong class="text-cream font-medium">Sábado (18/10):</strong> Abertura 16:00 | Shows até 01:00</li>
+                            <li>• <strong class="text-cream font-medium">Domingo (19/10):</strong> Abertura 15:30 | Shows até 00:00</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- O que levar / Proibido -->
-                <div class="bg-black/30 border border-cream-subtle p-8 space-y-4">
-                    <h2 class="font-display text-xl text-cream">O que levar e Permissões</h2>
-                    <div class="text-sm text-cream-muted space-y-2">
-                        <p><strong class="text-cream">Permitido:</strong> Documento com foto, garrafa de água plástica transparente sem tampa, capa de chuva e mochila pequena.</p>
-                        <p><strong class="text-cream">Proibido:</strong> Objetos cortantes, garrafas de vidro, bastão de selfie e câmeras profissionais.</p>
+                <div class="bg-violet-dark border-2 border-cream p-8 space-y-6 shadow-[8px_8px_0_0_#51307A] hover:shadow-[12px_12px_0_0_#EFE6D2] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4 border-b border-dashed border-cream-subtle pb-3">
+                            <span class="bg-cream text-violet-dark font-bold text-[10px] px-2.5 py-1 tracking-widest uppercase font-mono border border-violet-dark">Regras</span>
+                            <span class="text-xs font-mono text-purple-300">02</span>
+                        </div>
+                        <h2 class="font-display font-bold text-2xl text-cream mb-4">O que levar e Permissões</h2>
+                        <div class="text-sm text-cream-muted space-y-4 font-light">
+                            <p class="bg-white/[0.03] p-3 border-l-2 border-cream"><strong class="text-cream font-semibold block mb-1">Permitido:</strong> Documento com foto, garrafa de água plástica transparente sem tampa, capa de chuva e mochila pequena.</p>
+                            <p class="bg-white/[0.03] p-3 border-l-2 border-purple-accent"><strong class="text-cream font-semibold block mb-1">Proibido:</strong> Objetos cortantes, garrafas de vidro, bastão de selfie e câmeras profissionais.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Acessibilidade e Estrutura -->
-                <div class="bg-black/30 border border-cream-subtle p-8 space-y-4">
-                    <h2 class="font-display text-xl text-cream">Acessibilidade e Apoio</h2>
-                    <p class="text-sm text-cream-muted leading-relaxed">
-                        Acessibilidade total para PCDs, rampas, banheiros adaptados, área reservada próxima aos palcos e brigada médica de plantão.
-                    </p>
+                <div class="bg-violet-dark border-2 border-cream p-8 space-y-6 shadow-[8px_8px_0_0_#51307A] hover:shadow-[12px_12px_0_0_#EFE6D2] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4 border-b border-dashed border-cream-subtle pb-3">
+                            <span class="bg-cream text-violet-dark font-bold text-[10px] px-2.5 py-1 tracking-widest uppercase font-mono border border-violet-dark">Inclusão</span>
+                            <span class="text-xs font-mono text-purple-300">03</span>
+                        </div>
+                        <h2 class="font-display font-bold text-2xl text-cream mb-4">Acessibilidade e Apoio</h2>
+                        <p class="text-sm text-cream-muted leading-relaxed font-light">
+                            Acessibilidade total para PCDs, rampas, banheiros adaptados, área reservada próxima aos palcos e brigada médica de plantão.
+                        </p>
+                    </div>
                 </div>
 
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-cream-subtle bg-violet-dark py-12 mt-auto">
+    <!-- Footer -->
+    <footer class="border-t-2 border-cream-subtle bg-violet-dark py-12 mt-auto relative z-10">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-cream-muted">
-            <div><span class="font-display italic text-lg text-cream">Ritmo Roxo</span> — Festival de Pop Alternativo 2026</div>
-            <p class="text-xs">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-accent">
+                    <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="currentColor"/>
+                </svg>
+                <span class="font-display italic text-lg text-cream font-bold">Ritmo Roxo</span> — Festival de Pop Alternativo 2026
+            </div>
+            <p class="text-xs font-mono">© 2026 Ritmo Roxo. Todos os direitos reservados.</p>
         </div>
     </footer>
 

@@ -1,122 +1,243 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
+
+
 :root {
+
     --bg-dark: #241A30;
+
     --purple: #51307A;
+
     --cream: #EFE6D2;
+
     --black: #000000;
+
 }
+
+
 
 body {
+
     background-color: var(--bg-dark);
+
     color: var(--cream);
+
     font-family: 'DM Sans', sans-serif;
+
     overflow-x: hidden;
+
     scroll-behavior: smooth;
+
 }
+
+
 
 /* Cor de fundo do rodapé */
+
 footer {
+
     background-color: var(--black) !important;
+
 }
+
+
 
 /* Fotos arredondadas dos artistas no Line-up */
+
 .artist-avatar {
+
     width: 5.5rem;
+
     height: 5.5rem;
+
     border-radius: 9999px;
+
     object-fit: cover;
+
     border: 2px solid rgba(81, 48, 122, 0.8);
+
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+
     transition: transform 0.3s ease, border-color 0.3s ease;
+
 }
+
+
 
 .artist-card:hover .artist-avatar {
+
     transform: scale(1.06);
+
     border-color: #EFE6D2;
+
 }
+
+
 
 h1, h2, h3, .font-display {
+
     font-family: 'Space Grotesk', sans-serif;
+
 }
+
+
 
 @keyframes spinSlow {
+
     from { transform: rotate(0deg); }
+
     to { transform: rotate(360deg); }
+
 }
+
+
 
 .vinyl-spinning {
+
     animation: spinSlow 12s linear infinite;
+
 }
+
+
 
 .vinyl-paused {
+
     animation-play-state: paused;
+
 }
+
+
 
 ::-webkit-scrollbar {
+
     width: 8px;
+
 }
+
 ::-webkit-scrollbar-track {
+
     background: #181122;
+
 }
+
 ::-webkit-scrollbar-thumb {
+
     background: #51307A;
+
     border-radius: 4px;
+
 }
+
+
 
 a, button, input, select, textarea {
+
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
 }
+
+
 
 .vinyl-grooves {
+
     background: repeating-radial-gradient(
+
         circle at center,
+
         #110c18,
+
         #110c18 2px,
+
         #1d1428 3px,
+
         #110c18 4px
+
     );
+
 }
+
+
 
 .vinyl-sheen {
+
     background: linear-gradient(
+
         135deg,
+
         rgba(255,255,255,0.08) 0%,
+
         rgba(255,255,255,0) 40%,
+
         rgba(255,255,255,0) 60%,
+
         rgba(255,255,255,0.05) 100%
+
     );
+
 }
+
+
 
 .tonearm {
+
     transform-origin: 20px 20px;
+
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
 }
+
+
 
 .tonearm-active {
+
     transform: rotate(26deg);
+
 }
+
+
 
 .faq-answer {
+
     max-height: 0;
+
     overflow: hidden;
+
     transition: max-height 0.35s ease-out, opacity 0.25s ease-out;
+
     opacity: 0;
+
 }
+
+
 
 .faq-answer.open {
+
     max-height: 300px;
+
     opacity: 1;
+
 }
+
+
 
 input[type="text"], input[type="email"], textarea, select {
+
     background-color: rgba(0, 0, 0, 0.3);
+
     border: 1px solid rgba(239, 230, 210, 0.2);
+
     color: #EFE6D2;
+
 }
 
+
+
 input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
+
     outline: none;
+
     border-color: #EFE6D2;
+
     box-shadow: 0 0 0 1px #EFE6D2;
+
 }
