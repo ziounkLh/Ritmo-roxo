@@ -20,6 +20,22 @@ footer {
     background-color: var(--black) !important;
 }
 
+/* Fotos arredondadas dos artistas no Line-up */
+.artist-avatar {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 2px solid rgba(81, 48, 122, 0.8);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.artist-card:hover .artist-avatar {
+    transform: scale(1.06);
+    border-color: #EFE6D2;
+}
+
 h1, h2, h3, .font-display {
     font-family: 'Space Grotesk', sans-serif;
 }
